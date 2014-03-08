@@ -1,7 +1,7 @@
 # One Degree's Mobile App v1.0
 
 Code named _Duboce_, the mobile app consists of a basic wrapper for One
-Degree's resource server of community opportunities and organizations.
+Degree's resource server of community opportunities & organizations.
 
 ## Development environment setup
 
