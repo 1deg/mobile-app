@@ -1,6 +1,6 @@
 # One Degree's Mobile App v1.0
 
-Code named _Dubuce_, the mobile app consists of a basic wrapper for One
+Code named _Duboce_, the mobile app consists of a basic wrapper for One
 Degree's resource server of community opportunities and organizations.
 
 ## Development environment setup
