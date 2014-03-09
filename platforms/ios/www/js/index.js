@@ -49,25 +49,40 @@ function opportunitySearch(query) {
   });
   
   var opps = odc.findOpportunities(query, function(data) {
-    $('#opportunity_results').empty();
+    $('#opportunity-results ul').empty();
     $.each(data['opportunities'], function(index, opp) {
-      var result = $('<div class="ui-corner-all custom-corners"></div>');
-      var header = $('<div class="ui-bar ui-bar-a"><h3><div class="rating"></div><div class="title"></div></h3></div>');
-      var content = $('<div class="ui-body ui-body-a"><p></p></div>');
-      header.find('.title').html(opp['title']);
+      var result = $('<li><a href="#"><h3><div class="rating"></div><div class="title"></div></h3><p></p></a></li>');
+      result.find('.title').html(opp['title']);
       if (opp['rating'] > 0) {
         for (var i = 0; i < 5; i++) {
-          header.find('.rating').append('<span class="ui-btn-icon-left ui-icon-star' + (i < opp['rating'] ? '' : '-o')  + '"></span>');          
+          result.find('.rating').append('<span class="ui-btn-icon-left ui-icon-star' + (i < opp['rating'] ? '' : '-o')  + '"></span>');          
         }
       }
-      content.find('p').html(_.str.prune(opp['description'], 200));
-      result.append(header).append(content);
-      $('#opportunity_results').append(result);
+      result.find('p').html(_.str.prune(opp['description'], 200));
+      result
+        .data('title', opp['title'])
+        .data('description', opp['description'])
+        .data('rating', opp['rating'])
+        .data('organization', opp['organization']['name']);
+      $('#opportunity-results ul').append(result);
     });
     $.mobile.loading('hide');
     $.mobile.pageContainer.pagecontainer('change', '#opportunities');
   });
 }
+
+$('#opportunity-results').on('click', 'a', function() {
+  var result = $(this).parent('li');
+  if (result.data('rating') > 0) {
+    for (var i = 0; i < 5; i++) {
+      $('#opportunity-rating').append('<span class="ui-btn-icon-left ui-alt-icon ui-icon-star' + (i < result.data('rating') ? '' : '-o')  + '"></span>');          
+    }
+  }
+  $('#opportunity-title').html(result.data('title'));
+  $('#opportunity-description').html(result.data('description'));
+  $('#opportunity-organization').html(result.data('organization'));
+  $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail', { transition: 'slide' });
+});
 
 //   c.getTranslations(['organizations', 1, 'opportunities', 1], 'es', function(data) {
 //     $('#test_area').html("Title in Spanish: " + data['title']);

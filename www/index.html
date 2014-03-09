@@ -35,7 +35,24 @@
         <h1>One Degree</h1>
       </div>
 
-      <div id="opportunity_results"></div>
+      <div id="opportunity-results">
+        <ul data-role="listview"></ul>
+      </div>
+    </div>
+
+    <div data-role="page" id="opportunity-detail">
+      <div data-role="header" data-add-back-btn="true" data-position="fixed">
+        <h1>One Degree</h1>
+      </div>
+
+      <div role="main" class="ui-content">
+        <h2>
+          <div id="opportunity-rating" class="rating"></div>
+          <div id="opportunity-title"></div>
+        </h2>
+        <h4 id="opportunity-organization"></h4>
+        <p id="opportunity-description"></p>
+      </div>
     </div>
 
     <script type="text/javascript" src="cordova.js"></script>

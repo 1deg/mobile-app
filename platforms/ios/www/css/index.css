@@ -1,16 +1,16 @@
-#opportunity_results h3 {
-  width: 100%;
+#opportunity-results .title, #opportunity-results p {
+  white-space: normal;
 }
 
 .rating {
   float: right;
-  margin-left: 20px;
+  margin: 0 8px 0 20px;
 }
 
 .rating span {
   position: relative;
   box-shadow: none;
-  padding-left: 1.2em;
+  padding-left: 18px;
 }
 .rating span:after {
   background-color: transparent !important;
