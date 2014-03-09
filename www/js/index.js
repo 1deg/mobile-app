@@ -52,4 +52,9 @@ function opportunitySearch(query) {
 //       $('#test_area').append(opp['title']);
 //     });
 //   });
+
+//   c.getTranslations(['organizations', 1, 'opportunities', 1], 'es', function(data) {
+//     $('#test_area').html("Title in Spanish: " + data['title']);
+//   });
+
 // });
