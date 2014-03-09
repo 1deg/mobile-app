@@ -13,7 +13,7 @@ function allDaysClosed(schedule) {
   var allClosed = true;
   $.each(daysList, function(index, dayName) {
     if (schedule[dayName + '_start'] != '' && schedule[dayName + '_start'] != null) {
-      allClosed = true;
+      allClosed = allClosed && false;
       return;
     }
   });

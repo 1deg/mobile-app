@@ -113,13 +113,17 @@ $('#opportunity-results').on('click', 'a', function() {
     return location.address + (location.unit == '' ? '' : ', ' + location.unit) + '<br />' + location.city + ', ' + location.state + ' ' + location.zip_code;
   }).join('<br /><br />'));
 
-  $('#opportunity-when').html(_.map(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'], function(day) {
-    if (result.data('schedule')[day + '_start'] != null && result.data('schedule')[day + '_start'] == '') {
-      return '<b>' + _.str.capitalize($.t('days.' + day)) + ':</b> ' + $.t('Closed');
-    } else {
-      return '<b>' + _.str.capitalize($.t('days.' + day)) + ':</b> ' + niceifyTime(result.data('schedule')[day + '_start']) + ' - ' + niceifyTime(result.data('schedule')[day + '_end']);
-    }
-  }).join('<br />'));
+  if (allDaysClosed(result.data('schedule'))) {
+    $('#opportunity-when').html('<p><em>' + $.t('opportunities.No schedule listed for this opportunity_') + '</em></p>');
+  } else {
+    $('#opportunity-when').html(_.map(daysList, function(day) {
+      if (result.data('schedule')[day + '_start'] != null && result.data('schedule')[day + '_start'] == '') {
+        return '<b>' + _.str.capitalize($.t('days.' + day)) + ':</b> ' + $.t('Closed');
+      } else {
+        return '<b>' + _.str.capitalize($.t('days.' + day)) + ':</b> ' + niceifyTime(result.data('schedule')[day + '_start']) + ' - ' + niceifyTime(result.data('schedule')[day + '_end']);
+      }
+    }).join('<br />'));
+  }
 
   $('#opportunity-contact').html(_.map(result.data('phones'), function(phone) {
     return phone['digits'] + (phone['phone_type'] == '' ? '' : ' (' + phone['phone_type'] + ')');
