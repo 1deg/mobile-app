@@ -95,17 +95,6 @@ function opportunitySearch(query) {
   });
 }
 
-function niceifyTime(raw) {
-  if (raw === undefined || raw == '') {
-    return "";
-  }
-  if (raw.substring(0, 2) > 12) {
-    return (raw.substring(0, 2) - 12) + raw.substring(2) + ' pm';
-  } else {
-    return raw + ' am';
-  }
-}
-
 $('#opportunity-results').on('click', 'a', function() {
   var result = $(this).parent('li');
   $('#opportunity-rating').empty();
