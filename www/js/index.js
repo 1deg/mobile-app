@@ -110,7 +110,7 @@ $('#opportunity-results').on('click', 'a', function() {
   }).join('<br />'));
 
   $('#opportunity-contact').html(_.map(result.data('phones'), function(phone) {
-    return phone['digits'] + ' (' + phone['phone_type'] + ')';
+    return phone['digits'] + (phone['phone_type'] == '' ? '' : ' (' + phone['phone_type'] + ')');
   }).join('<br />'));
 
   $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail', { transition: 'slide' });

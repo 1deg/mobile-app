@@ -66,7 +66,8 @@ function opportunitySearch(query) {
         .data('organization', opp['organization']['name'])
         .data('requirements', opp['requirements'])
         .data('locations', opp['locations'])
-        .data('schedule', opp['schedule']);
+        .data('schedule', opp['schedule'])
+        .data('phones', opp['phones']);
       $('#opportunity-results ul').append(result);
     });
     $.mobile.loading('hide');
@@ -106,6 +107,10 @@ $('#opportunity-results').on('click', 'a', function() {
     } else {
       return '<b>' + _.str.capitalize(day) + ':</b> ' + niceifyTime(result.data('schedule')[day + '_start']) + ' - ' + niceifyTime(result.data('schedule')[day + '_end']);
     }
+  }).join('<br />'));
+
+  $('#opportunity-contact').html(_.map(result.data('phones'), function(phone) {
+    return phone['digits'] + (phone['phone_type'] == '' ? '' : ' (' + phone['phone_type'] + ')');
   }).join('<br />'));
 
   $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail', { transition: 'slide' });
