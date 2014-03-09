@@ -5,15 +5,27 @@ var OneDegreeClient = function (odrsHost, odrsVersion, apiKey) {
   this.apiKey = apiKey;
 
   this.findOpportunities = function(query, languageCode, callback) {
-    $.getJSON(url(['opportunities']), fullParams({ 'query[text]': query }), callback);
+    var params = { 'query[text]': query };
+    if (languageCode != "en") {
+      params['locale'] = languageCode;
+    }
+    $.getJSON(url(['opportunities']), fullParams(params), callback);
   }
 
   this.getOrganization = function(id, languageCode, callback) {
-    $.getJSON(url(['organizations', id]), fullParams({}), callback);
+    var params = {};
+    if (languageCode != "en") {
+      params['locale'] = languageCode;
+    }
+    $.getJSON(url(['organizations', id]), fullParams(params), callback);
   }
 
   this.getOpportunity = function(organizationID, id, languageCode, callback) {
-    $.getJSON(url(['organizations', organizationID, 'opportunities', id]), fullParams({}), callback);
+    var params = {};
+    if (languageCode != "en") {
+      params['locale'] = languageCode;
+    }
+    $.getJSON(url(['organizations', organizationID, 'opportunities', id]), fullParams(params), callback);
   }
 
   var url = function(pathArray) {
