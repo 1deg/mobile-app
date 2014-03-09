@@ -5,11 +5,19 @@ var OneDegreeClient = function (odrsHost, odrsVersion, apiKey) {
   this.apiKey = apiKey;
 
   this.findOpportunities = function(query, callback) {
-    return $.getJSON(url('opportunities'), fullParams({ 'query[text]': query }), callback);
+    return $.getJSON(url(['opportunities']), fullParams({ 'query[text]': query }), callback);
   }
 
-  var url = function(path) {
-    return odrsHost + '/' + odrsVersion + '/' + path
+  this.getTranslations = function(pathArrayToObject, languageCode, callback) {
+    pathArrayToObject.push('translations');
+    pathArrayToObject.push(languageCode);
+    return $.getJSON(url(pathArrayToObject), fullParams({}), callback);
+  }
+
+  var url = function(pathArray) {
+    pathArray.splice(0, 0, odrsHost);
+    pathArray.splice(1, 0, odrsVersion);
+    return pathArray.join('/');
   }
 
   var fullParams = function(params) {

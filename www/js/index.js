@@ -59,3 +59,8 @@ function opportunitySearch(query) {
   $('#temp').html(query);
   $.mobile.pageContainer.pagecontainer('change', '#opportunities');
 }
+
+//   c.getTranslations(['organizations', 1, 'opportunities', 1], 'es', function(data) {
+//     $('#test_area').html("Title in Spanish: " + data['title']);
+//   });
+

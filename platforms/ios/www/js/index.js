@@ -60,11 +60,7 @@ function opportunitySearch(query) {
   $.mobile.pageContainer.pagecontainer('change', '#opportunities');
 }
 
-// $(document).on('ready', function() {
-//   var c = new OneDegreeClient(ODRS['host'], ODRS['version'], ODRS['apiKey']);
-//   var opps = c.findOpportunities('jobs', function(data) {
-//     $.each(data['opportunities'], function(index, opp) {
-//       $('#test_area').append(opp['title']);
-//     });
+//   c.getTranslations(['organizations', 1, 'opportunities', 1], 'es', function(data) {
+//     $('#test_area').html("Title in Spanish: " + data['title']);
 //   });
-// });
+
