@@ -32,7 +32,15 @@ $('[name=tag]').on('click', function() {
   $('#' + $(this).attr('id') + '-list').delay(201).fadeIn(200);
 });
 $('[data-tag-search=true]').on('click', function() {
-  var tag = $(this).attr('id').substring(4);
-  $('#temp').html(tag);
-  $(':mobile-pagecontainer').pagecontainer('change', '#opportunities');
+  opportunitySearch($(this).attr('id').substring(4));
 });
+
+$('#home_search').on('submit', function() {
+  opportunitySearch($('#search').val());
+  return false;
+})
+
+function opportunitySearch(query) {
+  $('#temp').html(query);
+  $(':mobile-pagecontainer').pagecontainer('change', '#opportunities');
+}

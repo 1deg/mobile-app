@@ -27,7 +27,7 @@ for (var i = 0; i < tags.length; i++) {
 }
 
 $('[data-role=controlgroup][id!=tag-list]').hide();
-$('[name=tag]').on('click', function() {
+$('[name=tag]').on('click', function() { //
   $('[data-role=controlgroup][id!=tag-list]').fadeOut(200);
   $('#' + $(this).attr('id') + '-list').delay(201).fadeIn(200);
 });
