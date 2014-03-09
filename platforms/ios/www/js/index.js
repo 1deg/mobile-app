@@ -73,14 +73,17 @@ function opportunitySearch(query) {
 
 $('#opportunity-results').on('click', 'a', function() {
   var result = $(this).parent('li');
+  $('#opportunity-rating').empty();
   if (result.data('rating') > 0) {
     for (var i = 0; i < 5; i++) {
       $('#opportunity-rating').append('<span class="ui-btn-icon-left ui-alt-icon ui-icon-star' + (i < result.data('rating') ? '' : '-o')  + '"></span>');          
     }
   }
-  $('#opportunity-title').html(result.data('title'));
-  $('#opportunity-description').html(result.data('description'));
-  $('#opportunity-organization').html(result.data('organization'));
+  var fields = ['title', 'description', 'organization', 'requirements'];
+  _(fields).each(function(f) {
+    $('#opportunity-' + f).html(result.data(f));  
+  });
+  $('#opportunity-organization').attr('href', '#');
   $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail', { transition: 'slide' });
 });
 
