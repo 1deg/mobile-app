@@ -1,0 +1,17 @@
+#opportunity_results h3 {
+  width: 100%;
+}
+
+.rating {
+  float: right;
+  margin-left: 20px;
+}
+
+.rating span {
+  position: relative;
+  box-shadow: none;
+  padding-left: 1.2em;
+}
+.rating span:after {
+  background-color: transparent !important;
+}

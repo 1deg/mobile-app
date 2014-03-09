@@ -49,8 +49,20 @@ function opportunitySearch(query) {
   });
   
   var opps = odc.findOpportunities(query, function(data) {
+    $('#opportunity_results').empty();
     $.each(data['opportunities'], function(index, opp) {
-      $('#temp').append(opp['title']);
+      var result = $('<div class="ui-corner-all custom-corners"></div>');
+      var header = $('<div class="ui-bar ui-bar-a"><h3><div class="rating"></div><div class="title"></div></h3></div>');
+      var content = $('<div class="ui-body ui-body-a"><p></p></div>');
+      header.find('.title').html(opp['title']);
+      if (opp['rating'] > 0) {
+        for (var i = 0; i < 5; i++) {
+          header.find('.rating').append('<span class="ui-btn-icon-left ui-icon-star' + (i < opp['rating'] ? '' : '-o')  + '"></span>');          
+        }
+      }
+      content.find('p').html(_.str.prune(opp['description'], 200));
+      result.append(header).append(content);
+      $('#opportunity_results').append(result);
     });
     $.mobile.loading('hide');
     $.mobile.pageContainer.pagecontainer('change', '#opportunities');
