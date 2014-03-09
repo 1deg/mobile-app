@@ -19,7 +19,7 @@ for (var i = 0; i < tags.length; i++) {
   var category = tags[i][0];
   var icon = tags[i][1];
   var tagList = tags[i][2];
-  $('#tag-list').append($('<a href="#" data-role="button" data-icon="' + icon + '" class="tag" id="tag-' + category + '" value="on" />').html( _.str.humanize(category)))
+  $('#tag-list').append($('<a href="#" data-role="button" data-icon="' + icon + '" class="tag" id="tag-' + category + '" value="on" data-localize="tags.' + category + '" />').html( _.str.humanize(category)))
 
   var fieldset = $('<div data-role="controlgroup" data-type="horizontal" data-mini="true" class="tag-list" id="tag-' + category + '-list" />');
   for (var j = 0; j < tagList.length; j++) {
@@ -85,6 +85,12 @@ $('#opportunity-results').on('click', 'a', function() {
   });
   $('#opportunity-organization').attr('href', '#');
   $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail', { transition: 'slide' });
+});
+
+// Initialize localization
+$('#language-selector').on('change', function(e) {
+  var opts = { language: $(this).val(), pathPrefix: "./locales" };
+  $("[data-localize]").localize("application", opts);
 });
 
 //   c.getTranslations(['organizations', 1, 'opportunities', 1], 'es', function(data) {
