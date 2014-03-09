@@ -383,3 +383,84 @@ Terminating in response to SpringBoard's termination.
 2014-03-09 08:48:24.860 Duboce[5817:80b] [CDVTimer][TotalPluginStartup] 11.345029ms
 2014-03-09 08:48:25.061 Duboce[5817:80b] Resetting plugins due to page load.
 2014-03-09 08:48:25.533 Duboce[5817:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2014-03-09 08:49:54.020 Duboce[8229:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 08:49:54.030 Duboce[8229:80b] Unlimited access to network resources
+2014-03-09 08:49:54.066 Duboce[8229:80b] [CDVTimer][statusbar] 11.165023ms
+2014-03-09 08:49:54.067 Duboce[8229:80b] [CDVTimer][TotalPluginStartup] 12.172997ms
+2014-03-09 08:49:54.258 Duboce[8229:80b] Resetting plugins due to page load.
+2014-03-09 08:49:55.016 Duboce[8229:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2014-03-09 08:59:45.047 Duboce[10235:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 08:59:45.076 Duboce[10235:80b] Unlimited access to network resources
+2014-03-09 08:59:45.109 Duboce[10235:80b] [CDVTimer][statusbar] 10.093987ms
+2014-03-09 08:59:45.109 Duboce[10235:80b] [CDVTimer][TotalPluginStartup] 10.623991ms
+2014-03-09 08:59:45.292 Duboce[10235:80b] Resetting plugins due to page load.
+2014-03-09 08:59:45.731 Duboce[10235:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+2014-03-09 09:01:48.760 Duboce[11975:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 09:01:48.771 Duboce[11975:80b] Unlimited access to network resources
+2014-03-09 09:01:48.807 Duboce[11975:80b] [CDVTimer][statusbar] 10.630965ms
+2014-03-09 09:01:48.808 Duboce[11975:80b] [CDVTimer][TotalPluginStartup] 11.470020ms
+2014-03-09 09:01:48.997 Duboce[11975:80b] Resetting plugins due to page load.
+2014-03-09 09:01:49.381 Duboce[11975:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+2014-03-09 09:03:17.295 Duboce[13391:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 09:03:17.305 Duboce[13391:80b] Unlimited access to network resources
+2014-03-09 09:03:17.337 Duboce[13391:80b] [CDVTimer][statusbar] 10.568976ms
+2014-03-09 09:03:17.338 Duboce[13391:80b] [CDVTimer][TotalPluginStartup] 11.105001ms
+2014-03-09 09:03:17.534 Duboce[13391:80b] Resetting plugins due to page load.
+2014-03-09 09:03:17.922 Duboce[13391:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+2014-03-09 10:35:00.006 Duboce[15173:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 10:35:00.016 Duboce[15173:80b] Unlimited access to network resources
+2014-03-09 10:35:00.051 Duboce[15173:80b] [CDVTimer][statusbar] 9.329021ms
+2014-03-09 10:35:00.051 Duboce[15173:80b] [CDVTimer][TotalPluginStartup] 9.872973ms
+2014-03-09 10:35:00.266 Duboce[15173:80b] Resetting plugins due to page load.
+2014-03-09 10:35:00.588 Duboce[15173:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+2014-03-09 10:36:08.923 Duboce[16672:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 10:36:08.933 Duboce[16672:80b] Unlimited access to network resources
+2014-03-09 10:36:08.965 Duboce[16672:80b] [CDVTimer][statusbar] 9.534001ms
+2014-03-09 10:36:08.966 Duboce[16672:80b] [CDVTimer][TotalPluginStartup] 10.053992ms
+2014-03-09 10:36:09.128 Duboce[16672:80b] Resetting plugins due to page load.
+2014-03-09 10:36:09.542 Duboce[16672:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+2014-03-09 10:36:33.141 Duboce[18243:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 10:36:33.150 Duboce[18243:80b] Unlimited access to network resources
+2014-03-09 10:36:33.184 Duboce[18243:80b] [CDVTimer][statusbar] 10.405004ms
+2014-03-09 10:36:33.184 Duboce[18243:80b] [CDVTimer][TotalPluginStartup] 10.939002ms
+2014-03-09 10:36:33.369 Duboce[18243:80b] Resetting plugins due to page load.
+2014-03-09 10:36:34.157 Duboce[18243:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+2014-03-09 10:36:57.776 Duboce[19724:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 10:36:57.786 Duboce[19724:80b] Unlimited access to network resources
+2014-03-09 10:36:57.819 Duboce[19724:80b] [CDVTimer][statusbar] 10.146022ms
+2014-03-09 10:36:57.819 Duboce[19724:80b] [CDVTimer][TotalPluginStartup] 10.674000ms
+2014-03-09 10:36:57.989 Duboce[19724:80b] Resetting plugins due to page load.
+2014-03-09 10:36:58.515 Duboce[19724:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+2014-03-09 10:37:17.088 Duboce[21066:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 10:37:17.098 Duboce[21066:80b] Unlimited access to network resources
+2014-03-09 10:37:17.131 Duboce[21066:80b] [CDVTimer][statusbar] 9.193003ms
+2014-03-09 10:37:17.131 Duboce[21066:80b] [CDVTimer][TotalPluginStartup] 9.709001ms
+2014-03-09 10:37:17.296 Duboce[21066:80b] Resetting plugins due to page load.
+2014-03-09 10:37:17.777 Duboce[21066:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+2014-03-09 10:38:17.615 Duboce[22413:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 10:38:17.626 Duboce[22413:80b] Unlimited access to network resources
+2014-03-09 10:38:17.658 Duboce[22413:80b] [CDVTimer][statusbar] 9.794950ms
+2014-03-09 10:38:17.658 Duboce[22413:80b] [CDVTimer][TotalPluginStartup] 10.327995ms
+2014-03-09 10:38:17.852 Duboce[22413:80b] Resetting plugins due to page load.
+2014-03-09 10:38:18.283 Duboce[22413:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+2014-03-09 10:39:40.194 Duboce[23780:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 10:39:40.204 Duboce[23780:80b] Unlimited access to network resources
+2014-03-09 10:39:40.235 Duboce[23780:80b] [CDVTimer][statusbar] 9.148955ms
+2014-03-09 10:39:40.235 Duboce[23780:80b] [CDVTimer][TotalPluginStartup] 9.715021ms
+2014-03-09 10:39:40.486 Duboce[23780:80b] Resetting plugins due to page load.
+2014-03-09 10:39:40.893 Duboce[23780:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+2014-03-09 10:40:09.919 Duboce[25286:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 10:40:09.928 Duboce[25286:80b] Unlimited access to network resources
+2014-03-09 10:40:09.962 Duboce[25286:80b] [CDVTimer][statusbar] 9.353995ms
+2014-03-09 10:40:09.962 Duboce[25286:80b] [CDVTimer][TotalPluginStartup] 9.914041ms
+2014-03-09 10:40:10.201 Duboce[25286:80b] Resetting plugins due to page load.
+2014-03-09 10:40:10.590 Duboce[25286:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2014-03-09 10:41:22.709 Duboce[26737:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-09 10:41:22.719 Duboce[26737:80b] Unlimited access to network resources
+2014-03-09 10:41:22.753 Duboce[26737:80b] [CDVTimer][statusbar] 10.039985ms
+2014-03-09 10:41:22.754 Duboce[26737:80b] [CDVTimer][TotalPluginStartup] 10.757983ms
+2014-03-09 10:41:22.977 Duboce[26737:80b] Resetting plugins due to page load.
+2014-03-09 10:41:23.354 Duboce[26737:80b] Finished load of: file:///Users/brian/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/7D6E20C2-8C2B-491A-B263-E7F2E6ED7CA0/Duboce.app/www/index.html

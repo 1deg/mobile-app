@@ -1,6 +1,8 @@
 // init client
 var odc = new OneDegreeClient(ODRS['host'], ODRS['version'], ODRS['apiKey']);
 
+$.mobile.defaultPageTransition = 'slide';
+
 // create a status bar
 $(document).on('deviceready', function() {
   StatusBar.overlaysWebView(false);
@@ -85,6 +87,7 @@ function opportunitySearch(query) {
         .data('description', opp['description'])
         .data('rating', opp['rating'])
         .data('organization', opp['organization']['name'])
+        .data('organization-id', opp['organization']['id'])
         .data('requirements', opp['requirements'])
         .data('locations', opp['locations'])
         .data('schedule', opp['schedule'])
@@ -116,7 +119,7 @@ $('#opportunity-results').on('click', 'a', function() {
   _(fields).each(function(f) {
     $('#opportunity-' + f).html(result.data(f));  
   });
-  $('#opportunity-organization').attr('href', '#');
+  $('#opportunity-organization').attr('href', '#').data('organization-id', result.data('organization-id'));
 
   $('#opportunity-where').html(_.map(result.data('locations'), function(location) {
     return location.address + (location.unit == '' ? '' : ', ' + location.unit) + '<br />' + location.city + ', ' + location.state + ' ' + location.zip_code;
@@ -134,9 +137,28 @@ $('#opportunity-results').on('click', 'a', function() {
     return phone['digits'] + (phone['phone_type'] == '' ? '' : ' (' + phone['phone_type'] + ')');
   }).join('<br />'));
 
-  $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail', { transition: 'slide' });
+  $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail');
 });
 
+$('#opportunity-organization').on('click', function() {
+  $.mobile.loading('show');
+
+  var opps = odc.getOrganization($(this).data('organization-id'), $.i18n.lng(), function(data) { 
+    $('#organization-rating').empty();
+    if (data['rating'] > 0) {
+      for (var i = 0; i < 5; i++) {
+        $('#organization-rating').append('<span class="ui-btn-icon-left ui-alt-icon ui-icon-star' + (i < data['rating'] ? '' : '-o')  + '"></span>');          
+      }
+    }
+    var fields = ['name', 'description'];
+    _(fields).each(function(f) {
+      $('#organization-' + f).html(data[f]);
+    });
+
+    $.mobile.loading('hide');
+    $.mobile.pageContainer.pagecontainer('change', '#organization-detail');
+  });
+});
 
 function replaceTranslatableFields(obj) {
   if(obj['translations'] != null) {
