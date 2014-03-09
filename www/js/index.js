@@ -9,13 +9,16 @@ $(document).on('deviceready', function() {
 
 // Initialize current locale
 $(document).on('ready', function() {
-  $.i18n.setLng('en'); // Eventually we should set this by some locally stored preference.
   reloadLocale();
 });
 
 function reloadLocale() {
   $.i18n.init({
-    resGetPath: './locales/' + $.i18n.lng() + '/translation.json'
+    lng: $.i18n.lng(),
+    resGetPath:"locales/__lng__/translation.json",
+    fallbackLng: 'en'
+  }, function() {
+    $('body').i18n();
   });
 }
 
@@ -26,22 +29,15 @@ $('#language-selector').on('change', function(e) {
 });
 
 // tag search on home page
-var tags = [
-  ['health', 'plus-square', ['alcohol', 'dental', 'drugs', 'food', 'medical', 'mental-health', 'therapy']],
-  ['housing', 'home', ['affordable-housing', 'emergency-shelter', 'home-buying', 'rent-assistance', 'shelter', 'tenants-rights', 'foreclosure']],
-  ['learning', 'book', ['after-school', 'children', 'scholarships', 'school', 'skills-training', 'tutoring', 'summer', 'college']],
-  ['money', 'usd', ['career', 'cash-assistance', 'clothing', 'finances', 'finding-work', 'small-business', 'taxes', 'loans']],
-  ['family', 'group', ['child-care', 'domestic-violence', 'immigration', 'lgbt', 'youth']]
-];
 for (var i = 0; i < tags.length; i++) {
   var category = tags[i][0];
   var icon = tags[i][1];
   var tagList = tags[i][2];
-  $('#tag-list').append($('<a href="#" data-role="button" data-icon="' + icon + '" class="tag" id="tag-' + category + '" value="on" data-localize="tags.' + category + '" />').html( _.str.humanize(category)))
+  $('#tag-list').append($('<a href="#" data-role="button" data-icon="' + icon + '" class="tag" id="tag-' + category + '" value="on" data-i18n="tags.' + category + '" />').html(category));
 
   var fieldset = $('<div data-role="controlgroup" data-type="horizontal" data-mini="true" class="tag-list" id="tag-' + category + '-list" />');
   for (var j = 0; j < tagList.length; j++) {
-    fieldset.append($('<a href="#" class="ui-btn" id="tag-' + tagList[j] + '" />').html(_.str.humanize(tagList[j])));
+    fieldset.append($('<a href="#" class="ui-btn" id="tag-' + tagList[j] + '" data-i18n="tags.' + tagList[j] + '" />').html(tagList[j]));
   }
   $('#tag-lists').append(fieldset);
 }
@@ -62,7 +58,7 @@ $('#home_search').on('submit', function() {
 
 function opportunitySearch(query) {
   $.mobile.loading('show', {
-    text: "Searching opportunities",
+    text: $.t("Searching opportunities___"),
     textVisible: true
   });
   
@@ -124,9 +120,9 @@ $('#opportunity-results').on('click', 'a', function() {
 
   $('#opportunity-when').html(_.map(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'], function(day) {
     if (result.data('schedule')[day + '_start'] == '') {
-      return '<b>' + _.str.capitalize(day) + ':</b> Closed';
+      return '<b>' + _.str.capitalize($.t('days.' + day)) + ':</b> ' + $.t('Closed');
     } else {
-      return '<b>' + _.str.capitalize(day) + ':</b> ' + niceifyTime(result.data('schedule')[day + '_start']) + ' - ' + niceifyTime(result.data('schedule')[day + '_end']);
+      return '<b>' + _.str.capitalize($.t('days.' + day)) + ':</b> ' + niceifyTime(result.data('schedule')[day + '_start']) + ' - ' + niceifyTime(result.data('schedule')[day + '_end']);
     }
   }).join('<br />'));
 
@@ -146,8 +142,3 @@ function replaceTranslatableFields(obj) {
   }
   return obj;
 }
-
-//   c.getTranslations(['organizations', 1, 'opportunities', 1], 'es', function(data) {
-//     $('#test_area').html("Title in Spanish: " + data['title']);
-//   });
-
