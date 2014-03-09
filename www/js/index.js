@@ -7,6 +7,24 @@ $(document).on('deviceready', function() {
   StatusBar.backgroundColorByName('gray');
 });
 
+// Initialize current locale
+$(document).on('ready', function() {
+  $.i18n.setLng('en'); // Eventually we should set this by some locally stored preference.
+  reloadLocale();
+});
+
+function reloadLocale() {
+  $.i18n.init({
+    resGetPath: './locales/' + $.i18n.lng() + '/translation.json'
+  });
+}
+
+// Change locales
+$('#language-selector').on('change', function(e) {
+  $.i18n.setLng($(this).val());
+  reloadLocale();
+});
+
 // tag search on home page
 var tags = [
   ['health', 'plus-square', ['alcohol', 'dental', 'drugs', 'food', 'medical', 'mental-health', 'therapy']],
@@ -48,9 +66,12 @@ function opportunitySearch(query) {
     textVisible: true
   });
   
-  var opps = odc.findOpportunities(query, 'en', function(data) {
+  var opps = odc.findOpportunities(query, $.i18n.lng(), function(data) {
     $('#opportunity-results ul').empty();
     $.each(data['opportunities'], function(index, opp) {
+      if($.i18n.lng() != 'en') {
+        opp = replaceTranslatableFields(opp);
+      }
       var result = $('<li><a href="#"><h3><div class="rating"></div><div class="title"></div></h3><p></p></a></li>');
       result.find('.title').html(opp['title']);
       if (opp['rating'] > 0) {
@@ -116,11 +137,15 @@ $('#opportunity-results').on('click', 'a', function() {
   $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail', { transition: 'slide' });
 });
 
-// Initialize localization
-$('#language-selector').on('change', function(e) {
-  var opts = { language: $(this).val(), pathPrefix: "./locales" };
-  $("[data-localize]").localize("application", opts);
-});
+
+function replaceTranslatableFields(obj) {
+  if(obj['translations'] != null) {
+    $.each(_.keys(obj['translations']), function(index, key) {
+      obj[key] = obj['translations'][key];
+    });
+  }
+  return obj;
+}
 
 //   c.getTranslations(['organizations', 1, 'opportunities', 1], 'es', function(data) {
 //     $('#test_area').html("Title in Spanish: " + data['title']);

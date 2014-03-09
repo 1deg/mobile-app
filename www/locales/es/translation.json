@@ -4,7 +4,9 @@
     "housing": "Vivienda",
     "learning": "Estudio",
     "money": "Dinero",
-    "family": "Familia"
+    "family": "Familia",
+
   },
+  "What are you looking for?": "¿Qué busca usted?",
   "What to do next": "lo que hacer proxima"
 }

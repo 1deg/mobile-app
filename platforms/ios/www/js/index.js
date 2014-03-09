@@ -48,9 +48,12 @@ function opportunitySearch(query) {
     textVisible: true
   });
   
-  var opps = odc.findOpportunities(query, 'en', function(data) {
+  var opps = odc.findOpportunities(query, $.i18n.lng(), function(data) {
     $('#opportunity-results ul').empty();
     $.each(data['opportunities'], function(index, opp) {
+      if($.i18n.lng() != 'en') {
+        opp = replaceTranslatableFields(opp);
+      }
       var result = $('<li><a href="#"><h3><div class="rating"></div><div class="title"></div></h3><p></p></a></li>');
       result.find('.title').html(opp['title']);
       if (opp['rating'] > 0) {
