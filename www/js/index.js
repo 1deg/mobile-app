@@ -52,12 +52,9 @@ function opportunitySearch(query) {
     $.each(data['opportunities'], function(index, opp) {
       $('#temp').append(opp['title']);
     });
+    $.mobile.loading('hide');
+    $.mobile.pageContainer.pagecontainer('change', '#opportunities');
   });
-
-  $.mobile.loading('hide');
-
-  $('#temp').html(query);
-  $.mobile.pageContainer.pagecontainer('change', '#opportunities');
 }
 
 //   c.getTranslations(['organizations', 1, 'opportunities', 1], 'es', function(data) {
