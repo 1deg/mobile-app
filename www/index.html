@@ -22,9 +22,9 @@
   </head>
   <body>
     <div data-role="page" id="home">
-      <div data-role="header">
-        <h1>One Degree</h1>
-      </div>
+      <header data-role="header" class="header-home">
+        <img alt="One Degree" class="header-logo" src="img/1deg-logo-duboce_493x148.png" height="30" width="99" />
+      </header>
       <div role="main" class="ui-content">
         <form id="home_search">
           <input type="search" name="search" id="search" placeholder="What are you looking for?" data-i18n="[placeholder]What are you looking for?" />
@@ -34,12 +34,11 @@
           </div>
         </form>
       </div>
-      <div data-role="footer">
-        <div class="ui-grid-c">
+      <footer data-role="footer">
+        <div class="ui-grid-b">
           <div class="ui-block-a"></div>
           <div class="ui-block-b"></div>
-          <div class="ui-block-c"></div>
-          <div class="ui-block-d">
+          <div class="ui-block-c">
             <form>
               <select name="select-native-2" id="language-selector" data-mini="true">
                 <option value="en">English</option>
@@ -48,13 +47,15 @@
             </form>
           </div>
         </div>
-      </div>
+      </footer>
     </div>
 
     <div data-role="page" id="opportunities">
-      <div data-role="header" data-add-back-btn="true" data-position="fixed">
-        <h1>One Degree</h1>
-      </div>
+      <header data-role="header" data-position="fixed" class="header-results">
+        <a class="header-back-button" data-icon="arrow-left" data-rel="back"></a>
+        <div class="results-found" data-i18n="opportunities.X results">X results found</div>
+        <img alt="One Degree" class="header-logo" src="img/1deg-logo-duboce_493x148.png" height="30" width="99" />
+      </header>
 
       <div id="opportunity-results">
         <ul data-role="listview"></ul>
@@ -63,7 +64,10 @@
 
     <div data-role="page" id="opportunity-detail">
       <div data-role="header" data-add-back-btn="true" data-position="fixed">
-        <h1>One Degree</h1>
+        <header data-role="header" data-position="fixed" class="header-details">
+          <a class="header-back-button" data-icon="arrow-left" data-rel="back"></a>
+          <img alt="One Degree" class="header-logo" src="img/1deg-logo-duboce_493x148.png" height="30" width="99" />
+        </header>
       </div>
 
       <div role="main" class="ui-content">
@@ -123,9 +127,10 @@
     </div>
 
     <div data-role="page" id="organization-detail">
-      <div data-role="header" data-add-back-btn="true" data-position="fixed">
-        <h1>One Degree</h1>
-      </div>
+      <header data-role="header" data-position="fixed" class="header-details">
+        <a class="header-back-button" data-icon="arrow-left" data-rel="back"></a>
+        <img alt="One Degree" class="header-logo" src="img/1deg-logo-duboce_493x148.png" height="30" width="99" />
+      </header>
 
       <div role="main" class="ui-content">
         <h2>

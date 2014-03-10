@@ -43,6 +43,8 @@
   },
   "What are you looking for?": "¿Qué busca usted?",
   "opportunities": {
+    "1 result": "1 resultado",
+    "X results": "__count__ resultados",
     "What to do next": "Qué hacer a continuación",
     "Where": "Donde",
     "When": "Cuándo",

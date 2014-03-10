@@ -66,6 +66,8 @@ function opportunitySearch(query) {
   
   var opps = odc.findOpportunities(query, $.i18n.lng(), function(data) {
     $('#opportunity-results ul').empty();
+    var oppCount = data['paging']['total_count'];
+    $('.results-found').html((oppCount == 1 ? $.t('opportunities.1 result') : $.t('opportunities.X results', { count: oppCount })));
     $.each(data['opportunities'], function(index, opp) {
       if($.i18n.lng() != 'en') {
         opp = replaceTranslatableFields(opp);
