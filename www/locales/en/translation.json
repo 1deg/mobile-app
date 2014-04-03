@@ -41,6 +41,7 @@
     "taxes": "Taxes",
     "loans": "Loans"
   },
+  "Start by searching": "Start by searching",
   "What are you looking for?": "What are you looking for?",
   "opportunities": {
     "1 result": "1 result",
@@ -65,5 +66,12 @@
   "Closed": "Closed",
   "or browse by keyword": "or browse by keyword",
   "within": "within",
-  "of": "of"
+  "of": "of",
+  "Your location": "Your location",
+  "Show more": "Show more",
+  "Back": "Back",
+  "distance": {
+    "1 mile": "1 mile",
+    "X miles": "__count__ miles"
+  }
 }

@@ -38,29 +38,32 @@
           </div>
         </div>
       </header>
-      <div role="main" class="ui-content">
+      <div role="main" class="ui-content ui-content-home">
         <form id="home_search">
+
+          <div class="start-label" data-i18n="Start by searching">Start by searching</div>
+
           <input type="search" name="search" id="search" placeholder="What are you looking for?" data-i18n="[placeholder]What are you looking for?" />
 
-          <div class="tag-list-or-label" data-i18n="or pick a keyword"></div>
+          <div class="tag-list-or-label" data-i18n="or browse by keyword">or browse by keyword</div>
 
           <div id="tag-lists">
-            <div data-role="controlgroup" data-type="horizontal" data-mini="true" id="tag-list"></div>
+            <div id="tag-list"></div>
           </div>
 
-          <p>
+          <p class="distance-select-container">
             <span data-i18n="within">within</span>
             <select id="distance" name="distance" data-mini="true" data-inline="true">
-              <option value="1.60934">1 mile</option>
-              <option value="4.82803">3 miles</option>
-              <option value="8.04672">5 miles</option>
-              <option value="16.0934">10 miles</option>
-              <option value="40.2336">25 miles</option>
-              <option selected="selected" value="80.4672">50 miles</option>
-              <option value="160.934">100 miles</option>
+              <option value="1.60934" data-i18n="distance.1 mile">1 mile</option>
+              <option value="4.82803" data-i18n="distance.X miles" data-i18n-options='{"count": "3"}'>3 miles</option>
+              <option value="8.04672" data-i18n="distance.X miles" data-i18n-options='{"count": "5"}'>5 miles</option>
+              <option value="16.0934" data-i18n="distance.X miles" data-i18n-options='{"count": "10"}'>10 miles</option>
+              <option value="40.2336" data-i18n="distance.X miles" data-i18n-options='{"count": "25"}'>25 miles</option>
+              <option selected="selected" value="80.4672" data-i18n="distance.X miles" data-i18n-options='{"count": "50"}'>50 miles</option>
+              <option value="160.934" data-i18n="distance.X miles" data-i18n-options='{"count": "100"}'>100 miles</option>
             </select>
             <span data-i18n="of">of</span>
-            <input type="text" id="location" name="location" />
+            <input type="text" id="location" name="location" placeholder="Your location" data-i18n="[placeholder]Your location" />
           </p>
         </form>
       </div>

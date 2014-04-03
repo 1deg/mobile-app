@@ -41,6 +41,7 @@
     "taxes": "Impuestos",
     "loans": "Préstamos"
   },
+  "Start by searching": "Empezar por buscar",
   "What are you looking for?": "¿Qué busca usted?",
   "opportunities": {
     "1 result": "1 resultado",
@@ -65,5 +66,12 @@
   "Closed": "Cerrado",
   "or browse by keyword": "o navegue",
   "within": "dentro de",
-  "of": "de"
+  "of": "de",
+  "Your location": "Su ubicación",
+  "Show more": "Mas resultados",
+  "Back": "Regresar",
+  "distance": {
+    "1 mile": "1 millas",
+    "X miles": "__count__ millas"
+  }
 }
