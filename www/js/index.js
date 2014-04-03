@@ -74,15 +74,9 @@ $('.tag-list a').on('click', function() {
 });
 
 $('#home_search').on('submit', function() {
-  // TODO: Update the lat and long jQuery selectors below
-  opportunitySearch({
-    searchTerm: $('#search').val(),
-    lat: $('#search').val(),
-    lon: $('#search').val(),
-    distance: $('#distance').val()
-  });
+  opportunitySearch($('#search').val());
   return false;
-})
+});
 
 function opportunitySearch(query) {
   $.mobile.loading('show', {
@@ -90,37 +84,50 @@ function opportunitySearch(query) {
     textVisible: true
   });
   
-  var opps = odc.findOpportunities(query, $.i18n.lng(), function(data) {
-    $('#opportunity-results ul').empty();
-    var oppCount = data['paging']['total_count'];
-    $('.results-found').html((oppCount == 1 ? $.t('opportunities.1 result') : $.t('opportunities.X results', { count: oppCount })));
-    $.each(data['opportunities'], function(index, opp) {
-      if($.i18n.lng() != 'en') {
-        opp = replaceTranslatableFields(opp);
-      }
-      var result = $('<li><a href="#"><h3><div class="rating"></div><div class="title"></div></h3><p></p></a></li>');
-      result.find('.title').html(opp['title']);
-      if (opp['rating'] > 0) {
-        for (var i = 0; i < 5; i++) {
-          result.find('.rating').append('<span class="ui-btn-icon-left ui-icon-star' + (i < opp['rating'] ? '' : '-o')  + '"></span>');          
+  var lat, lon, geocoder = new google.maps.Geocoder();
+  geocoder.geocode({ address: $('#location').val() }, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      lat = results[0].geometry.location.lat();
+      lon = results[0].geometry.location.lng();
+    }
+
+    var opps = odc.findOpportunities({
+      searchTerm: query,
+      lat: lat,
+      lon: lon,
+      distance: $('#distance').val()
+    }, $.i18n.lng(), function(data) {
+      $('#opportunity-results ul').empty();
+      var oppCount = data['paging']['total_count'];
+      $('.results-found').html((oppCount == 1 ? $.t('opportunities.1 result') : $.t('opportunities.X results', { count: oppCount })));
+      $.each(data['opportunities'], function(index, opp) {
+        if($.i18n.lng() != 'en') {
+          opp = replaceTranslatableFields(opp);
         }
-      }
-      result.find('p').html(_.str.prune(opp['description'], 200));
-      result
-        .data('title', opp['title'])
-        .data('description', opp['description'])
-        .data('rating', opp['rating'])
-        .data('organization', opp['organization']['name'])
-        .data('organization-id', opp['organization']['id'])
-        .data('requirements', opp['requirements'])
-        .data('locations', opp['locations'])
-        .data('schedule', opp['schedule'])
-        .data('phones', opp['phones']);
-      $('#opportunity-results ul').append(result);
+        var result = $('<li><a href="#"><h3><div class="rating"></div><div class="title"></div></h3><p></p></a></li>');
+        result.find('.title').html(opp['title']);
+        if (opp['rating'] > 0) {
+          for (var i = 0; i < 5; i++) {
+            result.find('.rating').append('<span class="ui-btn-icon-left ui-icon-star' + (i < opp['rating'] ? '' : '-o')  + '"></span>');          
+          }
+        }
+        result.find('p').html(_.str.prune(opp['description'], 200));
+        result
+          .data('title', opp['title'])
+          .data('description', opp['description'])
+          .data('rating', opp['rating'])
+          .data('organization', opp['organization']['name'])
+          .data('organization-id', opp['organization']['id'])
+          .data('requirements', opp['requirements'])
+          .data('locations', opp['locations'])
+          .data('schedule', opp['schedule'])
+          .data('phones', opp['phones']);
+        $('#opportunity-results ul').append(result);
+      });
+      $.mobile.loading('hide');
+      $.mobile.pageContainer.pagecontainer('change', '#opportunities');
+      $('#opportunity-results ul').listview('refresh');
     });
-    $.mobile.loading('hide');
-    $.mobile.pageContainer.pagecontainer('change', '#opportunities');
-    $('#opportunity-results ul').listview('refresh');
   });
 }
 
