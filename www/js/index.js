@@ -94,6 +94,7 @@ function opportunitySearch(query) {
     });
     $.mobile.loading('hide');
     $.mobile.pageContainer.pagecontainer('change', '#opportunities');
+    $('#opportunity-results ul').listview('refresh');
   });
 }
 
