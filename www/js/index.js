@@ -78,7 +78,9 @@ $('#home_search').on('submit', function() {
   return false;
 });
 
-function opportunitySearch(query) {
+function opportunitySearch(query, page) {
+  if (!page) page = 1;
+
   $.mobile.loading('show', {
     text: $.t("Searching opportunities___"),
     textVisible: true
@@ -95,16 +97,25 @@ function opportunitySearch(query) {
       searchTerm: query,
       lat: lat,
       lon: lon,
-      distance: $('#distance').val()
+      distance: $('#distance').val(),
+      page: page
     }, $.i18n.lng(), function(data) {
       $('#opportunity-results ul').empty();
       var oppCount = data['paging']['total_count'];
-      $('.results-found').html((oppCount == 1 ? $.t('opportunities.1 result') : $.t('opportunities.X results', { count: oppCount })));
+      if (oppCount == 1) {
+        $('.results-found').html($.t('opportunities.1 result'));
+      } else if (data['paging']['total_pages'] == 1) {
+        $('.results-found').html($.t('opportunities.1 page'), { count: oppCount });
+      } else {
+        var max = Math.min(data['paging']['total_count'], data['paging']['per_page'] * data['paging']['current_page']);
+        var min = data['paging']['per_page'] * (data['paging']['current_page'] - 1) + 1;
+        $('.results-found').html($.t('opportunities.X pages', { min: min, max: max, count: oppCount }));
+      }
       $.each(data['opportunities'], function(index, opp) {
         if($.i18n.lng() != 'en') {
           opp = replaceTranslatableFields(opp);
         }
-        var result = $('<li><a href="#"><h3><div class="rating"></div><div class="title"></div></h3><p></p></a></li>');
+        var result = $('<li><a href="#" class="result"><h3><div class="rating"></div><div class="title"></div></h3><p></p></a></li>');
         result.find('.title').html(opp['title']);
         if (opp['rating'] > 0) {
           for (var i = 0; i < 5; i++) {
@@ -124,6 +135,16 @@ function opportunitySearch(query) {
           .data('phones', opp['phones']);
         $('#opportunity-results ul').append(result);
       });
+
+      if (data['paging']['total_pages'] > data['paging']['current_page']) {
+        var showMore = $('<li><a href="#" class="show-more">Show more</li></a>');
+        showMore.find('a')
+          .data('query', query)
+          .data('page', data['paging']['current_page'] + 1);
+        $('#opportunity-results ul').append(showMore);
+      }
+
+      $.mobile.silentScroll(0);
       $.mobile.loading('hide');
       $.mobile.pageContainer.pagecontainer('change', '#opportunities');
       $('#opportunity-results ul').listview('refresh');
@@ -131,7 +152,7 @@ function opportunitySearch(query) {
   });
 }
 
-$('#opportunity-results').on('click', 'a', function() {
+$('#opportunity-results').on('click', 'a.result', function() {
   var result = $(this).parent('li');
   $('#opportunity-rating').empty();
   if (result.data('rating') > 0) {
@@ -168,6 +189,8 @@ $('#opportunity-results').on('click', 'a', function() {
   }).join('<br />'));
 
   $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail');
+}).on('click', 'a.show-more', function() {
+  opportunitySearch($(this).data('query'), $(this).data('page'));
 });
 
 $('#opportunity-organization').on('click', function() {

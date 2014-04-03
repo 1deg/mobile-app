@@ -9,7 +9,8 @@ var OneDegreeClient = function (odrsHost, odrsVersion, apiKey) {
       'query[text]': query.searchTerm,
       'query[lat]': query.lat,
       'query[long]': query.lon,
-      'query[distance]': query.distance
+      'query[distance]': query.distance,
+      'page': query.page
     };
     if (languageCode != "en") {
       params['locale'] = languageCode;

@@ -44,7 +44,8 @@
   "What are you looking for?": "What are you looking for?",
   "opportunities": {
     "1 result": "1 result",
-    "X results": "__count__ results",
+    "1 page": "Results 1-__count__",
+    "X pages": "Results __min__-__max__ of __count__",
     "What to do next": "What to do next",
     "Where": "Where",
     "When": "When",
