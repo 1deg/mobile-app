@@ -102,7 +102,9 @@ function opportunitySearch(query, page) {
     }, $.i18n.lng(), function(data) {
       $('#opportunity-results ul').empty();
       var oppCount = data['paging']['total_count'];
-      if (oppCount == 1) {
+      if (oppCount == 0) {
+        $('.results-found').html($.t('opportunities.0 results'));
+      } else if (oppCount == 1) {
         $('.results-found').html($.t('opportunities.1 result'));
       } else if (data['paging']['total_pages'] == 1) {
         $('.results-found').html($.t('opportunities.1 page'), { count: oppCount });
@@ -137,7 +139,7 @@ function opportunitySearch(query, page) {
       });
 
       if (data['paging']['total_pages'] > data['paging']['current_page']) {
-        var showMore = $('<li><a href="#" class="show-more">Show more</li></a>');
+        var showMore = $('<li><a href="#" class="show-more">' + $.t('opportunities.Show more') + '</li></a>');
         showMore.find('a')
           .data('query', query)
           .data('page', data['paging']['current_page'] + 1);

@@ -44,6 +44,7 @@
   "Start by searching": "Start by searching",
   "What are you looking for?": "What are you looking for?",
   "opportunities": {
+    "0 results": "No results",
     "1 result": "1 result",
     "1 page": "Results 1-__count__",
     "X pages": "Results __min__-__max__ of __count__",
@@ -51,7 +52,8 @@
     "Where": "Where",
     "When": "When",
     "Contact": "Contact",
-    "No schedule listed for this opportunity_": "No schedule listed for this opportunity."
+    "No schedule listed for this opportunity_": "No schedule listed for this opportunity.",
+    "Show more": "Show more"
   },
   "Searching opportunities___": "Searching opportunities...",
   "days": {
