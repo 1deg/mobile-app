@@ -99,8 +99,8 @@ label.ui-btn {
 .ui-flipswitch.ui-corner-all,
 /* Count bubble */
 .ui-li-count {
-	-webkit-border-radius: 0.1em /*{global-radii-buttons}*/;
-	border-radius: 0.1em /*{global-radii-buttons}*/;
+	-webkit-border-radius: 0.2em /*{global-radii-buttons}*/;
+	border-radius: 0.2em /*{global-radii-buttons}*/;
 }
 /* Icon-only buttons */
 .ui-btn-icon-notext.ui-btn-corner-all,
@@ -145,12 +145,15 @@ label.ui-btn {
 .ui-btn-icon-top:after,
 .ui-btn-icon-bottom:after,
 .ui-btn-icon-notext:after {
-	background-color: #d6b43d /*{global-icon-color}*/;
-	background-color: rgba(214,180,61,0.2) /*{global-icon-disc}*/;
+	/*
+	background-color: #d6b43d /*{global-icon-color};
+	background-color: rgba(214,180,61,0.2) /*{global-icon-disc};
+	*/
+	background: none;
 	background-position: center center;
 	background-repeat: no-repeat;
-	-webkit-border-radius: 1em;
-	border-radius: 1em;
+	/*-webkit-border-radius: 1em;
+	border-radius: 1em;*/
 }
 /* Alt icons */
 .ui-alt-icon.ui-btn:after,

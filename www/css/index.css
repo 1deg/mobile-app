@@ -34,6 +34,44 @@ header a.header-back-button {
   margin-top: 20px;
 }
 
+.tag-list-or-label {
+  text-align: center;
+  font-weight: bold;
+  font-size: 10pt;
+}
+
+#tag-lists {
+  padding-top: 10px;
+}
+
+#tag-lists, .tag-list .ui-controlgroup-controls {
+  text-align: center;
+}
+
+.ui-page-theme-a #tag-list .ui-controlgroup-controls .ui-btn {
+  padding-top: 40px;
+}
+
+.ui-page-theme-a #tag-list .ui-controlgroup-controls .ui-btn:after {
+  height: 30px;
+  width: 30px;
+  background-size: 28px 28px;
+  left: 47%;
+  top: 0px;
+  padding-top: 10px;
+}
+
+.ui-page-theme-a .tag-list .ui-controlgroup-controls .ui-btn {
+  display: inline-block;
+  float: none;
+  margin: 0 5px 7px;
+  border-right-width: 1px;
+}
+
+.tag {
+  /*height: 50px;*/
+}
+
 #opportunity-results .title, #opportunity-results p {
   white-space: normal;
 }

@@ -145,8 +145,10 @@ label.ui-btn {
 .ui-btn-icon-top:after,
 .ui-btn-icon-bottom:after,
 .ui-btn-icon-notext:after {
-	background-color: #d6b43d /*{global-icon-color}*/;
-	background-color: rgba(214,180,61,0.2) /*{global-icon-disc}*/;
+	/*
+	background-color: #d6b43d /*{global-icon-color};
+	background-color: rgba(214,180,61,0.2) /*{global-icon-disc}; 
+	*/
 	background-position: center center;
 	background-repeat: no-repeat;
 	-webkit-border-radius: 1em;

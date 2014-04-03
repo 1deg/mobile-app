@@ -55,11 +55,11 @@ for (var i = 0; i < tags.length; i++) {
   var category = tags[i][0];
   var icon = tags[i][1];
   var tagList = tags[i][2];
-  $('#tag-list').append($('<a href="#" data-role="button" data-icon="' + icon + '" class="tag" id="tag-' + category + '" value="on" data-i18n="tags.' + category + '" />').html(category));
+  $('#tag-list').append($('<a href="#" data-role="button" data-inline="true" data-icon="' + icon + '" data-iconpos="top" class="tag" id="tag-' + category + '" value="on" data-i18n="tags.' + category + '" />').html(category));
 
   var fieldset = $('<div data-role="controlgroup" data-type="horizontal" data-mini="true" class="tag-list" id="tag-' + category + '-list" />');
   for (var j = 0; j < tagList.length; j++) {
-    fieldset.append($('<a href="#" class="ui-btn" id="tag-' + tagList[j] + '" data-i18n="tags.' + tagList[j] + '" />').html(tagList[j]));
+    fieldset.append($('<a href="#" class="ui-btn ui-btn-inline" id="tag-' + tagList[j] + '" data-i18n="tags.' + tagList[j] + '" />').html(tagList[j]));
   }
   $('#tag-lists').append(fieldset);
 }
