@@ -5,7 +5,12 @@ var OneDegreeClient = function (odrsHost, odrsVersion, apiKey) {
   this.apiKey = apiKey;
 
   this.findOpportunities = function(query, languageCode, callback) {
-    var params = { 'query[text]': query };
+    var params = {
+      'query[text]': query.searchTerm,
+      'query[lat]': query.lat,
+      'query[long]': query.lon,
+      'query[distance]': query.distance
+    };
     if (languageCode != "en") {
       params['locale'] = languageCode;
     }

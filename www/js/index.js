@@ -74,7 +74,13 @@ $('.tag-list a').on('click', function() {
 });
 
 $('#home_search').on('submit', function() {
-  opportunitySearch($('#search').val());
+  // TODO: Update the lat and long jQuery selectors below
+  opportunitySearch({
+    searchTerm: $('#search').val(),
+    lat: $('#search').val(),
+    lon: $('#search').val(),
+    distance: $('#distance').val()
+  });
   return false;
 })
 
