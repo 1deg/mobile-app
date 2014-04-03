@@ -145,9 +145,10 @@ $('#opportunity-results').on('click', 'a', function() {
   });
   $('#opportunity-organization').attr('href', '#').data('organization-id', result.data('organization-id'));
 
+  var mapsPrefix = (device.platform == 'iOS' ? 'maps:' : 'geo:0,0+?q='); 
   $('#opportunity-where').html(_.map(result.data('locations'), function(location) {
     var text = location.address + (location.unit == '' ? '' : ', ' + location.unit) + '<br />' + location.city + ', ' + location.state + ' ' + location.zip_code;
-    return '<a href="maps:' + text + '">' + text + '</a>';
+    return '<a href="' + mapsPrefix + text + '">' + text + '</a>';
   }).join('<br /><br />'));
 
   if (allDaysClosed(result.data('schedule'))) {
