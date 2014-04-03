@@ -23,7 +23,20 @@
   <body>
     <div data-role="page" id="home">
       <header data-role="header" class="header-home">
-        <img alt="One Degree" class="header-logo" src="img/1deg-logo-duboce_493x148.png" height="30" width="99" />
+        <div class="ui-grid-b">
+          <div class="ui-block-a">
+            <img alt="One Degree" class="header-logo" src="img/1deg-logo-duboce_493x148.png" height="35" width="117" />
+          </div>
+          <div class="ui-block-b"></div>
+          <div class="ui-block-c">
+            <form>
+              <select name="select-native-2" id="language-selector" data-mini="true">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+              </select>
+            </form>
+          </div>
+        </div>
       </header>
       <div role="main" class="ui-content">
         <form id="home_search">
@@ -44,25 +57,11 @@
               <option selected="selected" value="80.4672">50 miles</option>
               <option value="160.934">100 miles</option>
             </select>
-            of
+            <span data-i18n="of">of</span>
             <input type="text" id="location" name="location" />
           </p>
         </form>
       </div>
-      <footer data-role="footer">
-        <div class="ui-grid-b">
-          <div class="ui-block-a"></div>
-          <div class="ui-block-b"></div>
-          <div class="ui-block-c">
-            <form>
-              <select name="select-native-2" id="language-selector" data-mini="true">
-                <option value="en">English</option>
-                <option value="es">Español</option>
-              </select>
-            </form>
-          </div>
-        </div>
-      </footer>
     </div>
 
     <div data-role="page" id="opportunities">

@@ -1,5 +1,4 @@
 header {
-  height: 40px;
   text-align: center;
 }
 
@@ -11,7 +10,7 @@ header a.header-back-button {
 }
 
 .header-home .header-logo {
-  margin: 5px 20px;
+  margin: 8px 20px 0;
 }
 
 .header-results .header-logo {
