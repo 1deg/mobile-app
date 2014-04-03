@@ -137,7 +137,7 @@ function opportunitySearch(query, page) {
       });
 
       if (data['paging']['total_pages'] > data['paging']['current_page']) {
-        var showMore = $('<li><a href="#" class="show-more">Show more</li></a>');
+        var showMore = $('<li><a href="#" class="show-more">' + $.t('opportunities.Show more') + '</li></a>');
         showMore.find('a')
           .data('query', query)
           .data('page', data['paging']['current_page'] + 1);
