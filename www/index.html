@@ -11,7 +11,7 @@
     <script src="js/i18next-1.7.2.min.js"></script>
     <script src="js/underscore.min.js"></script>
     <script src="js/underscore.string.min.js"></script>
-    <script src="js/config/odrs-config.js"></script>
+    <script src="js/config/config.js"></script>
     <script src="js/static/days-list.js"></script>
     <script src="js/static/tags.js"></script>
     <script src="js/helpers/shared.js"></script>
@@ -32,6 +32,21 @@
           <div id="tag-lists">
             <div data-role="controlgroup" data-type="horizontal" data-mini="true" id="tag-list"></div>
           </div>
+
+          <p>
+            within
+            <select id="distance" name="distance" data-inline="true">
+              <option value="1.60934">1 mile</option>
+              <option value="4.82803">3 miles</option>
+              <option value="8.04672">5 miles</option>
+              <option value="16.0934">10 miles</option>
+              <option value="40.2336">25 miles</option>
+              <option selected="selected" value="80.4672">50 miles</option>
+              <option value="160.934">100 miles</option>
+            </select>
+            of
+            <input type="text" id="location" name="location" />
+          </p>
         </form>
       </div>
       <footer data-role="footer">

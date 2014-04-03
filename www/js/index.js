@@ -7,12 +7,32 @@ $.mobile.defaultPageTransition = 'slide';
 $(document).on('deviceready', function() {
   StatusBar.overlaysWebView(false);
   StatusBar.backgroundColorByName('gray');
+
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=reverseGeocode&key=' + GOOGLE['apiKey'];
+  document.body.appendChild(script);
 });
 
 // Initialize current locale
 $(document).on('ready', function() {
   reloadLocale();
 });
+
+function reverseGeocode() {
+  var geocoder = new google.maps.Geocoder();
+  navigator.geolocation.getCurrentPosition(function(position) {
+    geocoder.geocode({ latLng: new google.maps.LatLng(position.coords.latitude, position.coords.longitude) }, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK && results[1]) {
+        $('#location').val(results[1].formatted_address);
+      } else {
+        alert('Geocoder failed due to: ' + status);
+      }
+    });
+  }, function(error) {
+    // don't worry about error
+  })
+}
 
 function reloadLocale() {
   $.i18n.init({
@@ -113,7 +133,8 @@ $('#opportunity-results').on('click', 'a', function() {
   $('#opportunity-organization').attr('href', '#').data('organization-id', result.data('organization-id'));
 
   $('#opportunity-where').html(_.map(result.data('locations'), function(location) {
-    return location.address + (location.unit == '' ? '' : ', ' + location.unit) + '<br />' + location.city + ', ' + location.state + ' ' + location.zip_code;
+    var text = location.address + (location.unit == '' ? '' : ', ' + location.unit) + '<br />' + location.city + ', ' + location.state + ' ' + location.zip_code;
+    return '<a href="maps:' + text + '">' + text + '</a>';
   }).join('<br /><br />'));
 
   if (allDaysClosed(result.data('schedule'))) {
