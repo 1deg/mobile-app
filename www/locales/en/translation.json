@@ -43,6 +43,7 @@
   },
   "What are you looking for?": "What are you looking for?",
   "opportunities": {
+    "0 results": "No results",
     "1 result": "1 result",
     "1 page": "Results 1-__count__",
     "X pages": "Results __min__-__max__ of __count__",
