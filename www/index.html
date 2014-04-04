@@ -14,9 +14,11 @@
     <script src="js/config.js"></script>
     <script src="js/static/days-list.js"></script>
     <script src="js/static/tags.js"></script>
-    <script src="js/helpers/shared.js"></script>
+    <script src="js/helpers.js"></script>
     <script src="js/od.js"></script>
     <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <title>One Degree</title>
   </head>
@@ -185,8 +187,11 @@
         <div class="ui-bar"></div>
       </div>
     </div>
-
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
   </body>
 </html>

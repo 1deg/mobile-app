@@ -57,4 +57,4 @@ IOS/www/
 platforms/*
 
 # js config files
-www/js/config/*
+www/js/config.js

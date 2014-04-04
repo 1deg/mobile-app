@@ -3,51 +3,15 @@ var odc = new OneDegreeClient(ODRS['host'], ODRS['version'], ODRS['apiKey']);
 
 $.mobile.defaultPageTransition = 'slide';
 
-// create a status bar
-$(document).on('deviceready', function() {
-  StatusBar.overlaysWebView(false);
-  StatusBar.backgroundColorByName('gray');
-
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=reverseGeocode&key=' + GOOGLE['apiKey'];
-  document.body.appendChild(script);
+$(document).ready(function() {
+  // StatusBar.overlaysWebView(false);
+  // StatusBar.backgroundColorByName('gray');
 });
 
-// Initialize current locale
-$(document).on('ready', function() {
-  reloadLocale();
-});
-
-function reverseGeocode() {
-  var geocoder = new google.maps.Geocoder();
-  navigator.geolocation.getCurrentPosition(function(position) {
-    geocoder.geocode({ latLng: new google.maps.LatLng(position.coords.latitude, position.coords.longitude) }, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK && results[1]) {
-        $('#location').val(results[1].formatted_address);
-      } else {
-        alert('Geocoder failed due to: ' + status);
-      }
-    });
-  }, function(error) {
-    // don't worry about error
-  })
-}
-
-function reloadLocale() {
-  $.i18n.init({
-    lng: $.i18n.lng(),
-    resGetPath:"locales/__lng__/translation.json",
-    fallbackLng: 'en'
-  }, function() {
-    $('body').i18n();
-  });
-}
 
 // Change locales
 $('#language-selector').on('change', function(e) {
-  $.i18n.setLng($(this).val());
-  reloadLocale();
+  reloadLocale($(this).val());
 });
 
 // tag search on home page
@@ -86,17 +50,17 @@ function opportunitySearch(query, page) {
     textVisible: true
   });
   
-  var lat, lon, geocoder = new google.maps.Geocoder();
-  geocoder.geocode({ address: $('#location').val() }, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      lat = results[0].geometry.location.lat();
-      lon = results[0].geometry.location.lng();
-    }
+  // var lat, lon, geocoder = new google.maps.Geocoder();
+  // geocoder.geocode({ address: $('#location').val() }, function(results, status) {
+  //   if (status == google.maps.GeocoderStatus.OK) {
+  //     lat = results[0].geometry.location.lat();
+  //     lon = results[0].geometry.location.lng();
+  //   }
 
     var opps = odc.findOpportunities({
       searchTerm: query,
-      lat: lat,
-      lon: lon,
+      lat: 37.785834, // lat,
+      lon: -122.406417, // lon,
       distance: $('#distance').val(),
       page: page
     }, $.i18n.lng(), function(data) {
@@ -151,7 +115,7 @@ function opportunitySearch(query, page) {
       $.mobile.pageContainer.pagecontainer('change', '#opportunities');
       $('#opportunity-results ul').listview('refresh');
     });
-  });
+  // });
 }
 
 $('#opportunity-results').on('click', 'a.result', function() {
@@ -214,12 +178,3 @@ $('#opportunity-organization').on('click', function() {
     $.mobile.pageContainer.pagecontainer('change', '#organization-detail');
   });
 });
-
-function replaceTranslatableFields(obj) {
-  if(obj['translations'] != null) {
-    $.each(_.keys(obj['translations']), function(index, key) {
-      obj[key] = obj['translations'][key];
-    });
-  }
-  return obj;
-}
