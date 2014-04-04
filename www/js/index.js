@@ -88,7 +88,7 @@ function opportunitySearch(query, page) {
             result.find('.rating').append('<span class="ui-btn-icon-left ui-icon-star' + (i < opp['rating'] ? '' : '-o')  + '"></span>');          
           }
         }
-        result.find('p').html(_.str.prune(opp['description'], 200));
+        result.find('p').html(_.str.prune(opp['description'], 140) + ' (' + $.t('read more') + ')');
         result
           .data('title', opp['title'])
           .data('icon', iconFromTags(opp['tags']))
