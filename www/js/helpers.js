@@ -54,3 +54,15 @@ function replaceTranslatableFields(obj) {
   }
   return obj;
 }
+
+function iconFromTags(tagArray) {
+  var iconName = '';
+  $.each(tagArray, function(index, givenTag) {
+    $.each(tags, function(index, tag) {
+      if(givenTag == tag[0]) {
+        iconName = tag[1];
+      }
+    });
+  });
+  return iconName;
+}

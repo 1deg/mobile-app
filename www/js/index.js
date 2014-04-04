@@ -82,7 +82,7 @@ function opportunitySearch(query, page) {
           opp = replaceTranslatableFields(opp);
         }
         var result = $('<li><a href="#" class="result"><h3><div class="rating"></div><div class="title"></div></h3><p></p></a></li>');
-        result.find('.title').html(opp['title']);
+        result.find('.title').html('<i class="fa fa-' + iconFromTags(opp['tags']) + ' fa-fw"></i> ' + opp['title']);
         if (opp['rating'] > 0) {
           for (var i = 0; i < 5; i++) {
             result.find('.rating').append('<span class="ui-btn-icon-left ui-icon-star' + (i < opp['rating'] ? '' : '-o')  + '"></span>');          
@@ -91,6 +91,7 @@ function opportunitySearch(query, page) {
         result.find('p').html(_.str.prune(opp['description'], 200));
         result
           .data('title', opp['title'])
+          .data('icon', iconFromTags(opp['tags']))
           .data('description', opp['description'])
           .data('rating', opp['rating'])
           .data('organization', opp['organization']['name'])
@@ -128,11 +129,17 @@ $('#opportunity-results').on('click', 'a.result', function() {
   }
   var fields = ['title', 'description', 'organization', 'requirements'];
   _(fields).each(function(f) {
-    $('#opportunity-' + f).html(result.data(f));  
+    $('#opportunity-' + f).html(result.data(f));
   });
+  if(result.data('icon') == '') {
+    $('#opportunity-title-container i.fa').css('display', 'display');
+  } else {
+    $('#opportunity-title-container i.fa').addClass('fa-' + result.data('icon'));
+  }
   $('#opportunity-organization').attr('href', '#').data('organization-id', result.data('organization-id'));
 
-  var mapsPrefix = (device.platform == 'iOS' ? 'maps:' : 'geo:0,0+?q='); 
+  // var mapsPrefix = (device.platform == 'iOS' ? 'maps:' : 'geo:0,0+?q=');
+  var mapsPrefix = 'maps:';
   $('#opportunity-where').html(_.map(result.data('locations'), function(location) {
     var text = location.address + (location.unit == '' ? '' : ', ' + location.unit) + '<br />' + location.city + ', ' + location.state + ' ' + location.zip_code;
     return '<a href="' + mapsPrefix + text + '">' + text + '</a>';
