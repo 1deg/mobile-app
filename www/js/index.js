@@ -104,11 +104,19 @@ function opportunitySearch(query, page) {
       });
 
       if (data['paging']['total_pages'] > data['paging']['current_page']) {
-        var showMore = $('<li><a href="#" class="show-more">' + $.t('opportunities.Show more') + '</li></a>');
+        var showMore = $('<li><a href="#" class="show-more">' + $.t('Show more') + '</li></a>');
         showMore.find('a')
           .data('query', query)
           .data('page', data['paging']['current_page'] + 1);
         $('#opportunity-results ul').append(showMore);
+      }
+
+      if (data['paging']['current_page'] > 1) {
+        var showPrevious = $('<li><a href="#" class="show-previous">' + $.t('Back') + '</li></a>');
+        showPrevious.find('a')
+          .data('query', query)
+          .data('page', data['paging']['current_page'] - 1);
+        $('#opportunity-results ul').prepend(showPrevious);
       }
 
       $.mobile.silentScroll(0);
@@ -162,7 +170,7 @@ $('#opportunity-results').on('click', 'a.result', function() {
   }).join('<br />'));
 
   $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail');
-}).on('click', 'a.show-more', function() {
+}).on('click', 'a.show-more, a.show-previous', function() {
   opportunitySearch($(this).data('query'), $(this).data('page'));
 });
 
