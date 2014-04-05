@@ -2,14 +2,14 @@
 <widget id="org.onedegree.duboce" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <feature name="App">
-        <param name="android-package" value="org.apache.cordova.App" />
+        <param name="android-package" value="org.onedegree.duboce" />
     </feature>
-    <name>Duboce</name>
+    <name>One Degree</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Find social services and other resources in your community to help you with health, housing, food, employment, and more.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="help@1deg.org" href="https://www.1deg.org">
+        One Degree
     </author>
     <content src="index.html" />
     <access origin="*" />
