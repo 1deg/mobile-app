@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="css/jqm-icon-pack-fa.css" />
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/text.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/jquery.mobile-1.4.2.min.js"></script>
@@ -84,7 +85,7 @@
       </header>
 
       <div id="opportunity-results">
-        <ul data-role="listview"></ul>
+        <ul data-role="listview" class="results-list"></ul>
       </div>
     </div>
 
@@ -96,59 +97,66 @@
         </header>
       </div>
 
-      <div role="main" class="ui-content">
-        <h2>
-          <div id="opportunity-rating" class="rating"></div>
-          <div id="opportunity-title-container"><i class="fa fa-fw"></i><span id="opportunity-title"></span></div>
-        </h2>
-        <h4><a id="opportunity-organization"></a></h4>
+      <div role="main" class="ui-content details">
+        <div class="details-title-container" id="opportunity-title-container">
+          <i class="fa fa-fw"></i>
+          <div class="details-title" id="opportunity-title"></div>
+          <div class="rating" id="opportunity-rating"></div>
+        </div>
+        <div class="organization-link"><a id="opportunity-organization"></a></div>
 
-        <div class="ui-corner-all">
-          <div class="ui-body ui-body-a">
-            <p id="opportunity-description"></p>
+        <div class="panel">
+          <div class="ui-corner-all">
+            <div class="ui-body ui-body-a">
+              <p id="opportunity-description"></p>
+            </div>
           </div>
         </div>
-        <div class="ui-bar"></div>
 
-        <div class="ui-corner-all custom-corners">
-          <div class="ui-bar ui-bar-a">
-            <h3 data-i18n="opportunities.What to do next">What to do next</h3>
-          </div>
-          <div class="ui-body ui-body-a">
-            <p id="opportunity-requirements"></p>
+        <div class="panel">
+          <div class="ui-corner-all custom-corners">
+            <div class="ui-bar ui-bar-a">
+              <div class="panel-heading"><i class="fa fa-play fa-fw"></i><span data-i18n="details.What to do next">What to do next</span></div>
+            </div>
+            <div class="ui-body ui-body-a">
+              <p id="opportunity-requirements"></p>
+            </div>
           </div>
         </div>
-        <div class="ui-bar"></div>
 
-        <div class="ui-corner-all custom-corners">
-          <div class="ui-bar ui-bar-a">
-            <h3 data-i18n="opportunities.Where">Where</h3>
-          </div>
-          <div class="ui-body ui-body-a">
-            <p id="opportunity-where"></p>
+        <div class="panel">
+          <div class="ui-corner-all custom-corners">
+            <div class="ui-bar ui-bar-a">
+              <div class="panel-heading"><i class="fa fa-location-arrow fa-fw"></i><span data-i18n="details.Where">Where</span></div>
+            </div>
+            <div class="ui-body ui-body-a">
+              <p id="opportunity-where"></p>
+            </div>
           </div>
         </div>
-        <div class="ui-bar"></div>
 
-        <div class="ui-corner-all custom-corners ui-icon-clock-o">
-          <div class="ui-bar ui-bar-a">
-            <h3 data-i18n="opportunities.When">When</h3>
-          </div>
-          <div class="ui-body ui-body-a">
-            <p id="opportunity-when"></p>
+        <div class="panel">
+          <div class="ui-corner-all custom-corners ui-icon-clock-o">
+            <div class="ui-bar ui-bar-a">
+              <div class="panel-heading"><i class="fa fa-clock-o fa-fw"></i><span data-i18n="details.When">When</span></div>
+            </div>
+            <div class="ui-body ui-body-a">
+              <p id="opportunity-when"></p>
+            </div>
           </div>
         </div>
-        <div class="ui-bar"></div>
 
-        <div class="ui-corner-all custom-corners ui-icon-clock-o">
-          <div class="ui-bar ui-bar-a">
-            <h3 data-i18n="opportunities.Contact">Contact</h3>
-          </div>
-          <div class="ui-body ui-body-a">
-            <p id="opportunity-contact"></p>
+        <div class="panel">
+          <div class="ui-corner-all custom-corners ui-icon-clock-o">
+            <div class="ui-bar ui-bar-a">
+              <div class="panel-heading"><i class="fa fa-phone fa-fw"></i><span data-i18n="details.Contact">Contact</span></div>
+            </div>
+            <div class="ui-body ui-body-a">
+              <p id="opportunity-contact"></p>
+            </div>
           </div>
         </div>
-        <div class="ui-bar"></div>
+
       </div>
     </div>
 
@@ -164,32 +172,36 @@
           <div id="organization-name"></div>
         </h2>
 
-        <div class="ui-corner-all">
-          <div class="ui-body ui-body-a">
-            <p id="organization-description"></p>
+        <div class="panel">
+          <div class="ui-corner-all">
+            <div class="ui-body ui-body-a">
+              <p id="organization-description"></p>
+            </div>
           </div>
         </div>
-        <div class="ui-bar"></div>
 
-        <div class="ui-corner-all custom-corners">
-          <div class="ui-bar ui-bar-a">
-            <h3>Where</h3>
-          </div>
-          <div class="ui-body ui-body-a">
-            <p id="organization-where"></p>
+        <div class="panel">
+          <div class="ui-corner-all custom-corners">
+            <div class="ui-bar ui-bar-a">
+              <div class="panel-heading"><i class="fa fa-location-arrow fa-fw"></i><span data-i18n="details.Where">Where</span></div>
+            </div>
+            <div class="ui-body ui-body-a">
+              <p id="organization-where"></p>
+            </div>
           </div>
         </div>
-        <div class="ui-bar"></div>
 
-        <div class="ui-corner-all custom-corners ui-icon-clock-o">
-          <div class="ui-bar ui-bar-a">
-            <h3>Contact</h3>
+        <div class="panel">
+          <div class="ui-corner-all custom-corners ui-icon-clock-o">
+            <div class="ui-bar ui-bar-a">
+              <div class="panel-heading"><i class="fa fa-phone fa-fw"></i><span data-i18n="details.Contact">Contact</span></div>
+            </div>
+            <div class="ui-body ui-body-a">
+              <p id="organization-contact"></p>
+            </div>
           </div>
-          <div class="ui-body ui-body-a">
-            <p id="organization-contact"></p>
-          </div>
+          <div class="ui-bar"></div>
         </div>
-        <div class="ui-bar"></div>
       </div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>

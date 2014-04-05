@@ -86,6 +86,7 @@ header a.header-back-button {
 
 .distance-select-container {
   text-align: center;
+  padding: 10px 0 0;
 }
 
 #opportunity-results .title, #opportunity-results p {
@@ -118,4 +119,9 @@ header a.header-back-button {
   border-bottom-left-radius: inherit;
   -webkit-border-bottom-right-radius: inherit;
   border-bottom-right-radius: inherit;
+}
+
+.ui-listview .ui-btn {
+  background-color: #eee;
+  border-color: #dcdcdc;
 }
