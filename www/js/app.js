@@ -19,7 +19,7 @@ var app = {
   },
 
   onDeviceReady: function() {
-    reloadLocale('en');
+    reloadLocale('en'); // TODO: Replace this with a locally stored preference value.
     app.getPosition();
   },
 
