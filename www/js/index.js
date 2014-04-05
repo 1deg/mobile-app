@@ -43,24 +43,30 @@ $('#home_search').on('submit', function() {
 });
 
 function opportunitySearch(query, page) {
+
+  if(!app.googleMapsReady) {
+    alert($.t("It looks like you_re currently offline_ Please go online before searching_"));
+    return false;
+  }
+
   if (!page) page = 1;
 
   $.mobile.loading('show', {
     text: $.t("Searching opportunities___"),
     textVisible: true
   });
-  
-  // var lat, lon, geocoder = new google.maps.Geocoder();
-  // geocoder.geocode({ address: $('#location').val() }, function(results, status) {
-  //   if (status == google.maps.GeocoderStatus.OK) {
-  //     lat = results[0].geometry.location.lat();
-  //     lon = results[0].geometry.location.lng();
-  //   }
+
+  var lat, lon, geocoder = new google.maps.Geocoder();
+  geocoder.geocode({ address: $('#location').val() }, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      lat = results[0].geometry.location.lat();
+      lon = results[0].geometry.location.lng();
+    }
 
     var opps = odc.findOpportunities({
       searchTerm: query,
-      lat: 37.785834, // lat,
-      lon: -122.406417, // lon,
+      lat: lat,
+      lon: lon,
       distance: $('#distance').val(),
       page: page
     }, $.i18n.lng(), function(data) {

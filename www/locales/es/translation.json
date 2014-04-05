@@ -70,6 +70,8 @@
   "within": "dentro de",
   "of": "de",
   "Your location": "Su ubicación",
+  "Your location could not be found automatically_ Please specify it below_": "Su ubicación no se ha encontrado de forma automática. Por favor, indique a continuación.",
+  "It looks like you_re currently offline_ Please go online before searching_": "Parece que usted no está actualmente conectado al Internet. Por favor conecte antes de buscar.",
   "Show more": "Mas resultados",
   "read more": "leer más",
   "Back": "Regresar",

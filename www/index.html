@@ -55,7 +55,7 @@
             <div id="tag-list"></div>
           </div>
 
-          <p class="distance-select-container">
+          <div class="distance-select-container">
             <span data-i18n="within">within</span>
             <select id="distance" name="distance" data-mini="true" data-inline="true">
               <option value="1.60934" data-i18n="distance.1 mile">1 mile</option>
@@ -67,8 +67,11 @@
               <option value="160.934" data-i18n="distance.X miles" data-i18n-options='{"count": "100"}'>100 miles</option>
             </select>
             <span data-i18n="of">of</span>
+          </div>
+          <div class="location-container">
+            <p id="location_status" class='status'></p>
             <input type="text" id="location" name="location" placeholder="Your location" data-i18n="[placeholder]Your location" />
-          </p>
+          </div>
         </form>
       </div>
     </div>

@@ -21,18 +21,32 @@ function allDaysClosed(schedule) {
 }
 
 function reverseGeocode() {
-  var geocoder = new google.maps.Geocoder();
-  navigator.geolocation.getCurrentPosition(function(position) {
-    geocoder.geocode({ latLng: new google.maps.LatLng(position.coords.latitude, position.coords.longitude) }, function(results, status) {
+  if (!google || !google.maps.Geocoder) {
+    alert($.t("It looks like you_re currently offline_ Please go online before searching_"));
+  } else {
+    app.googleMapsReady = true;
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ latLng: new google.maps.LatLng(app.latitude, app.longitude) }, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK && results[1]) {
-        $('#location').val(results[1].formatted_address);
+        app.readableLocation = results[1].formatted_address;
+        $('#location').val(app.readableLocation);
+        $('#location_status').hide();
       } else {
-        alert('Geocoder failed due to: ' + status);
+        $('#location_status').html($.t('Your location could not be found automatically_ Please specify it below_'));
+        $('#location_status').addClass('status-alert');
+        $('#location_status').show();
+        console.log('Geocoder failed due to: ' + status);
       }
     });
-  }, function(error) {
-    // don't worry about error
-  })
+  }
+}
+
+function justConfirmGoogleMapsLoaded() {
+  if (!google || !google.maps.Geocoder) {
+    alert($.t("It looks like you_re currently offline_ Please go online before searching_"));
+  } else {
+    app.googleMapsReady = true;
+  }
 }
 
 function reloadLocale(newLocale) {
