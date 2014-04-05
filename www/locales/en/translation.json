@@ -48,12 +48,13 @@
     "1 result": "1 result",
     "1 page": "Results 1-__count__",
     "X pages": "Results __min__-__max__ of __count__",
-    "What to do next": "What to do next",
+    "What to do next": "What to do next"
+  },
+  "details": {
     "Where": "Where",
     "When": "When",
     "Contact": "Contact",
-    "No schedule listed for this opportunity_": "No schedule listed for this opportunity.",
-    "Show more": "Show more"
+    "No schedule listed_": "No schedule listed."
   },
   "Searching opportunities___": "Searching opportunities...",
   "days": {

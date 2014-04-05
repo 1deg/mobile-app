@@ -87,19 +87,18 @@ function opportunitySearch(query, page) {
         if($.i18n.lng() != 'en') {
           opp = replaceTranslatableFields(opp);
         }
-        var result = $('<li><a href="#" class="result"><h3><div class="rating"></div><div class="title"></div></h3><p></p></a></li>');
+        var result = $('<li><a href="#" class="result"><div class="results-li-heading"><div class="rating"></div><div class="icon-container"></div><div class="title"></div></div><div class="results-li-description description"></div></a></li>');
         var icon = iconFromTags(opp['tags']);
-        if(icon == '') {
-          result.find('.title').html(opp['title']);
-        } else {
-          result.find('.title').html('<i class="fa fa-' + iconFromTags(opp['tags']) + ' fa-fw"></i> ' + opp['title']);
+        result.find('.title').html(opp['title']);
+        if(icon != '') {
+          result.find('.icon-container').html('<i class="fa fa-' + iconFromTags(opp['tags']) + ' fa-fw"></i>');
         }
         if (opp['rating'] > 0) {
           for (var i = 0; i < 5; i++) {
             result.find('.rating').append('<span class="ui-btn-icon-left ui-icon-star' + (i < opp['rating'] ? '' : '-o')  + '"></span>');          
           }
         }
-        result.find('p').html(_.str.prune(opp['description'], 140) + ' (' + $.t('read more') + ')');
+        result.find('.description').html(_.str.prune(opp['description'], 140) + ' (' + $.t('read more') + ')');
         result
           .data('title', opp['title'])
           .data('icon', icon)
@@ -111,6 +110,9 @@ function opportunitySearch(query, page) {
           .data('locations', opp['locations'])
           .data('schedule', opp['schedule'])
           .data('phones', opp['phones']);
+        if(opp['properties']['action-signup-url'] != null && opp['properties']['action-signup-url'] != '') {
+          result.data('website', opp['properties']['action-signup-url']);
+        }
         $('#opportunity-results ul').append(result);
       });
 
@@ -135,7 +137,7 @@ function opportunitySearch(query, page) {
       $.mobile.pageContainer.pagecontainer('change', '#opportunities');
       $('#opportunity-results ul').listview('refresh');
     });
-  // });
+  });
 }
 
 $('#opportunity-results').on('click', 'a.result', function() {
@@ -148,7 +150,16 @@ $('#opportunity-results').on('click', 'a.result', function() {
   }
   var fields = ['title', 'description', 'organization', 'requirements'];
   _(fields).each(function(f) {
-    $('#opportunity-' + f).html(result.data(f));
+    var content = result.data(f);
+    if(content == '' || content == null) {
+      $('#opportunity-' + f).closest('.panel').hide();
+    } else {
+      $('#opportunity-' + f).closest('.panel').show();
+      if(f == 'requirements') {
+        content = parseLinks(content);
+      }
+      $('#opportunity-' + f).html(content);
+    }
   });
   if(result.data('icon') == '') {
     $('#opportunity-title-container i.fa').css('display', 'none');
@@ -158,15 +169,22 @@ $('#opportunity-results').on('click', 'a.result', function() {
   }
   $('#opportunity-organization').attr('href', '#').data('organization-id', result.data('organization-id'));
 
-  // var mapsPrefix = (device.platform == 'iOS' ? 'maps:' : 'geo:0,0+?q=');
-  var mapsPrefix = 'maps:';
-  $('#opportunity-where').html(_.map(result.data('locations'), function(location) {
-    var text = location.address + (location.unit == '' ? '' : ', ' + location.unit) + '<br />' + location.city + ', ' + location.state + ' ' + location.zip_code;
-    return '<a href="' + mapsPrefix + text + '">' + text + '</a>';
-  }).join('<br /><br />'));
+  var mapsPrefix = (device.platform == 'iOS' ? 'maps:' : 'geo:0,0+?q=');
+
+  // Yes, this is comparing an empty array to an empty string, but apparently you can't compare an empty array to [].
+  if(result.data('locations') == '') {
+    $('#opportunity-where').closest('.panel').hide();
+  } else {
+    $('#opportunity-where').closest('.panel').show();
+    $('#opportunity-where').html(
+      _.map(result.data('locations'), function(location) {
+        var text = location.address + (location.unit == '' ? '' : ', ' + location.unit) + '<br />' + location.city + ', ' + location.state + ' ' + location.zip_code;
+        return '<a href="' + mapsPrefix + text + '">' + text + '</a>';
+      }).join('<br /><br />'));
+  }
 
   if (allDaysClosed(result.data('schedule'))) {
-    $('#opportunity-when').html('<p><em>' + $.t('opportunities.No schedule listed for this opportunity_') + '</em></p>');
+    $('#opportunity-when').html('<p><em>' + $.t('details.No schedule listed_') + '</em></p>');
   } else {
     $('#opportunity-when').html(_.map(daysList, function(day) {
       if (result.data('schedule')[day + '_start'] != null && result.data('schedule')[day + '_start'] == '') {
@@ -178,8 +196,13 @@ $('#opportunity-results').on('click', 'a.result', function() {
   }
 
   $('#opportunity-contact').html(_.map(result.data('phones'), function(phone) {
-    return phone['digits'] + (phone['phone_type'] == '' ? '' : ' (' + phone['phone_type'] + ')');
+    return '<i class="fa fa-phone fa-fw"></i>' + phone['digits'] + ((phone['phone_type'] != '' && phone['phone_type'] != null) ? ' (' + phone['phone_type'] + ')' : '');
   }).join('<br />'));
+
+  if(result.data('website') != '' && result.data('website') != null) {
+    var url = fullUrlWithProtocol(result.data('website'));
+    $('#opportunity-contact').append('<br />' + '<i class="fa fa-external-link fa-fw"></i>' + '<a href="' + url + '" target="_blank">' + $.t('Website') + '</a>');
+  }
 
   $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail');
 }).on('click', 'a.show-more, a.show-previous', function() {

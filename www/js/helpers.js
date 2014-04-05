@@ -80,3 +80,18 @@ function iconFromTags(tagArray) {
   });
   return iconName;
 }
+
+function fullUrlWithProtocol(urlWithOrWithoutProtocol) {
+  urlHasProtocol = urlWithOrWithoutProtocol.search(/^http(s)?\:\/\//);
+  if(urlHasProtocol > -1) {
+    return urlWithOrWithoutProtocol;
+  } else {
+    return "http://" + urlWithOrWithoutProtocol;
+  }
+}
+
+function parseLinks(str) {
+  str = str.replace(/(https?[\S]+[^\W])\s?/, "<a href='$1' target='_blank'>$1</a> ");
+  str = str.replace(/([\S]+\@[\S]+(\.[\S]+)+[^\W])\s?/, "<a href='mailto:$1'>$1</a> ");
+  return str;
+}
