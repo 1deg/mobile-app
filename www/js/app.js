@@ -20,6 +20,8 @@ var app = {
 
   onDeviceReady: function() {
     reloadLocale('en'); // TODO: Replace this with a locally stored preference value.
+    StatusBar.overlaysWebView(false);
+    StatusBar.backgroundColorByName('gray');
     app.getPosition();
   },
 

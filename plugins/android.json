@@ -23,6 +23,9 @@
         },
         "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "org.onedegree.duboce"
+        },
+        "org.apache.cordova.statusbar": {
+            "PACKAGE_NAME": "org.onedegree.duboce"
         }
     },
     "dependent_plugins": {}
