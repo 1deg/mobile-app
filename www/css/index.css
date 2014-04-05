@@ -31,10 +31,10 @@ header a.header-back-button {
 }
 
 .start-label {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: normal;
   text-align: center;
-  padding: 10px 0 15px;
+  padding: 5px 0 10px;
 }
 
 .tag-list-or-label {
@@ -124,4 +124,22 @@ header a.header-back-button {
 .ui-listview .ui-btn {
   background-color: #eee;
   border-color: #dcdcdc;
+}
+
+.text-search-field-container {
+  text-align: center;
+}
+
+.text-search-field-container .ui-input-text {
+  width: 75%;
+  display: inline-block;
+}
+
+.text-search-field-container .ui-btn {
+  padding: 0;
+  margin: -5px 0 0;
+}
+
+.text-search-field-container .ui-btn i.fa {
+  padding: 8px 10px 10px;
 }
