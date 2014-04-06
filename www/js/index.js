@@ -184,7 +184,7 @@ $('#opportunity-results').on('click', 'a.result', function() {
   }
   $('#opportunity-organization').attr('href', '#').data('organization-id', result.data('organization-id'));
 
-  var mapsPrefix = (device.platform == 'iOS' ? 'maps:' : 'geo:0,0+?q=');
+  var mapsPrefix = (device.platform == 'iOS' ? 'maps:q=' : 'geo:0,0+?q=');
 
   // Yes, this is comparing an empty array to an empty string, but apparently you can't compare an empty array to [].
   if(result.data('locations') == '') {
@@ -193,8 +193,9 @@ $('#opportunity-results').on('click', 'a.result', function() {
     $('#opportunity-where').closest('.panel').show();
     $('#opportunity-where').html(
       _.map(result.data('locations'), function(location) {
-        var text = location.address + (location.unit ? ', ' + location.unit : '') + '<br />' + location.city + ', ' + location.state + ' ' + (location.zip_code || '');
-        return '<a href="' + mapsPrefix + text + '">' + text + '</a>';
+        var text = location.address + (location.unit ? ', ' + location.unit : '') + '<br />' + location.city + ', ' + location.state + (location.zip_code ? ' ' + location.zip_code : '');
+        var queryString = text.replace('<br />', ', ').replace(' ', '+');
+        return '<a href="' + mapsPrefix + queryString + '">' + text + '</a>';
       }).join('<br /><br />'));
   }
 
