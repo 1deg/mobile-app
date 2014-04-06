@@ -49,6 +49,14 @@ ul.results-list li .results-li-description {
   font-size: 18px;
 }
 
+.details .organization-name-container {
+  margin: 5px 0 0;
+}
+
+.details .organization-name-container .details-title {
+  margin: 0 0 0 15px;
+}
+
 .details .organization-link {
   margin-left: 28px;
 }
@@ -85,4 +93,8 @@ ul.results-list li .results-li-description {
 .details .ui-body p i.fa-fw,
 .details .ui-bar .panel-heading i.fa-fw {
   padding-right: 10px;
+}
+
+.space-after-panel {
+  padding-top: 15px;
 }

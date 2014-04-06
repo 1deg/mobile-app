@@ -96,6 +96,7 @@ header a.header-back-button {
 .rating {
   float: right;
   margin: 0 8px 0 20px;
+  padding: 0 0 10px 0;
 }
 
 .rating span {
