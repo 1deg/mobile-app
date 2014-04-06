@@ -11,7 +11,12 @@ $(document).ready(function() {
 
 // Change locales
 $('#language-selector').on('change', function(e) {
+  oldLocale = $.i18n.lng();
   reloadLocale($(this).val());
+  mixpanel.track('Changed locales', {
+    'previous_locale': oldLocale,
+    'new_locale': $.i18n.lng()
+  });
 });
 
 // tag search on home page
@@ -43,6 +48,14 @@ $('#home_search').on('submit', function() {
 });
 
 function opportunitySearch(query, page) {
+
+  mixpanel.track('Searched opportunities', {
+    'query': query,
+    'page': page,
+    'location': $('#location').val(),
+    'distance': $('#distance').val(),
+    'locale': $.i18n.lng()
+  });
 
   if(!app.googleMapsReady) {
     alert($.t("It looks like you_re currently offline_ Please go online before searching_"));
@@ -206,6 +219,16 @@ $('#opportunity-results').on('click', 'a.result', function() {
     $('#opportunity-contact').append('<br />' + '<i class="fa fa-external-link fa-fw"></i>' + '<a href="#" onclick="window.open(\'' + url + '\', \'_system\');">' + $.t('Website') + '</a>');
   }
 
+  $('#view_on_1deg').attr('onclick', "window.open('https://www.1deg.org/opportunities/" + result.data('slug') + "', '_system');");
+
+  mixpanel.track('Viewed opportunity', {
+    'opportunity_id': result.data('id'),
+    'opportunity_title': result.data('title'),
+    'organization_name': result.data('organization'),
+    'organization_id': result.data('organization-id'),
+    'locale': $.i18n.lng()
+  });
+
   $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail');
 }).on('click', 'a.show-more, a.show-previous', function() {
   opportunitySearch($(this).data('query'), $(this).data('page'));
@@ -227,6 +250,13 @@ $('#opportunity-organization').on('click', function() {
     });
 
     $.mobile.loading('hide');
+
+    mixpanel.track('Viewed organization', {
+      'organization_name': data['name'],
+      'organization_id': data['id'],
+      'locale': $.i18n.lng()
+    });
+
     $.mobile.pageContainer.pagecontainer('change', '#organization-detail');
   });
 });
