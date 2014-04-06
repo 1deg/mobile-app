@@ -10,7 +10,13 @@
                 "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>": 1,
                 "<feature name=\"StatusBar\"><param name=\"ios-package\" onload=\"true\" value=\"CDVStatusBar\" /></feature>": 1,
                 "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />": 1,
-                "<preference name=\"StatusBarBackgroundColor\" value=\"#000000\" />": 1
+                "<preference name=\"StatusBarBackgroundColor\" value=\"#000000\" />": 1,
+                "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>": 1
+            }
+        },
+        "framework": {
+            "CoreGraphics.framework": {
+                "false": 1
             }
         }
     },
@@ -22,6 +28,9 @@
             "PACKAGE_NAME": "org.onedegree.duboce"
         },
         "org.apache.cordova.statusbar": {
+            "PACKAGE_NAME": "org.onedegree.duboce"
+        },
+        "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "org.onedegree.duboce"
         }
     },

@@ -91,7 +91,7 @@ function fullUrlWithProtocol(urlWithOrWithoutProtocol) {
 }
 
 function parseLinks(str) {
-  str = str.replace(/(https?[\S]+[^\W])\s?/, "<a href='$1' target='_blank'>$1</a> ");
+  str = str.replace(/(https?[\S]+[^\W])\s?/, "<a href=\"#\" onclick=\"window.open('$1', '_system');\">$1</a> ");
   str = str.replace(/([\S]+\@[\S]+(\.[\S]+)+[^\W])\s?/, "<a href='mailto:$1'>$1</a> ");
   return str;
 }

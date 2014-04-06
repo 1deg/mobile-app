@@ -100,7 +100,9 @@ function opportunitySearch(query, page) {
         }
         result.find('.description').html(_.str.prune(opp['description'], 140) + ' (' + $.t('read more') + ')');
         result
+          .data('id', opp['id'])
           .data('title', opp['title'])
+          .data('slug', opp['slug'])
           .data('icon', icon)
           .data('description', opp['description'])
           .data('rating', opp['rating'])
@@ -201,7 +203,7 @@ $('#opportunity-results').on('click', 'a.result', function() {
 
   if(result.data('website') != '' && result.data('website') != null) {
     var url = fullUrlWithProtocol(result.data('website'));
-    $('#opportunity-contact').append('<br />' + '<i class="fa fa-external-link fa-fw"></i>' + '<a href="' + url + '" target="_blank">' + $.t('Website') + '</a>');
+    $('#opportunity-contact').append('<br />' + '<i class="fa fa-external-link fa-fw"></i>' + '<a href="#" onclick="window.open(\'' + url + '\', \'_system\');">' + $.t('Website') + '</a>');
   }
 
   $.mobile.pageContainer.pagecontainer('change', '#opportunity-detail');
