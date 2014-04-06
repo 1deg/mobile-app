@@ -4,6 +4,7 @@ var app = {
   longitude: 0,
   readableLocation: '',
   googleMapsReady: false,
+  mapsPrefix: '',
 
   // Application Constructor
   initialize: function() {
@@ -22,6 +23,7 @@ var app = {
     reloadLocale('en'); // TODO: Replace this with a locally stored preference value.
     StatusBar.overlaysWebView(false);
     StatusBar.backgroundColorByName('gray');
+    app.mapsPrefix = (device.platform == 'iOS' ? 'maps:q=' : 'geo:0,0+?q=');
     app.getPosition();
   },
 

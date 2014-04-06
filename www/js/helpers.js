@@ -95,3 +95,18 @@ function parseLinks(str) {
   str = str.replace(/([\S]+\@[\S]+(\.[\S]+)+[^\W])\s?/, "<a href='mailto:$1'>$1</a> ");
   return str;
 }
+
+function phoneContactLine(phone) {
+  return '<i class="fa fa-phone fa-fw"></i>' + phone['digits'] + ((phone['phone_type'] != '' && phone['phone_type'] != null) ? ' (' + phone['phone_type'] + ')' : '');
+}
+
+function websiteContactLine(website) {
+  var url = fullUrlWithProtocol(website);
+  return '<i class="fa fa-external-link fa-fw"></i>' + '<a href="#" onclick="window.open(\'' + url + '\', \'_system\');">' + $.t('Website') + '</a>'
+}
+
+function locationBlockAndLink(location) {
+  var text = location.address + (location.unit ? ', ' + location.unit : '') + '<br />' + location.city + ', ' + location.state + (location.zip_code ? ' ' + location.zip_code : '');
+  var queryString = text.replace('<br />', ', ').replace(' ', '+');
+  return '<a href="' + app.mapsPrefix + queryString + '">' + text + '</a>';
+}

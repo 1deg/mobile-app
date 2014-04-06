@@ -3,12 +3,6 @@ var odc = new OneDegreeClient(ODRS['host'], ODRS['version'], ODRS['apiKey']);
 
 $.mobile.defaultPageTransition = 'slide';
 
-$(document).ready(function() {
-  // StatusBar.overlaysWebView(false);
-  // StatusBar.backgroundColorByName('gray');
-});
-
-
 // Change locales
 $('#language-selector').on('change', function(e) {
   oldLocale = $.i18n.lng();
@@ -184,8 +178,6 @@ $('#opportunity-results').on('click', 'a.result', function() {
   }
   $('#opportunity-organization').attr('href', '#').data('organization-id', result.data('organization-id'));
 
-  var mapsPrefix = (device.platform == 'iOS' ? 'maps:q=' : 'geo:0,0+?q=');
-
   // Yes, this is comparing an empty array to an empty string, but apparently you can't compare an empty array to [].
   if(result.data('locations') == '') {
     $('#opportunity-where').closest('.panel').hide();
@@ -193,9 +185,7 @@ $('#opportunity-results').on('click', 'a.result', function() {
     $('#opportunity-where').closest('.panel').show();
     $('#opportunity-where').html(
       _.map(result.data('locations'), function(location) {
-        var text = location.address + (location.unit ? ', ' + location.unit : '') + '<br />' + location.city + ', ' + location.state + (location.zip_code ? ' ' + location.zip_code : '');
-        var queryString = text.replace('<br />', ', ').replace(' ', '+');
-        return '<a href="' + mapsPrefix + queryString + '">' + text + '</a>';
+        return locationBlockAndLink(location);
       }).join('<br /><br />'));
   }
 
@@ -212,15 +202,17 @@ $('#opportunity-results').on('click', 'a.result', function() {
   }
 
   $('#opportunity-contact').html(_.map(result.data('phones'), function(phone) {
-    return '<i class="fa fa-phone fa-fw"></i>' + phone['digits'] + ((phone['phone_type'] != '' && phone['phone_type'] != null) ? ' (' + phone['phone_type'] + ')' : '');
+    return phoneContactLine(phone);
   }).join('<br />'));
 
   if(result.data('website') != '' && result.data('website') != null) {
-    var url = fullUrlWithProtocol(result.data('website'));
-    $('#opportunity-contact').append('<br />' + '<i class="fa fa-external-link fa-fw"></i>' + '<a href="#" onclick="window.open(\'' + url + '\', \'_system\');">' + $.t('Website') + '</a>');
+    if($('#opportunity-contact').html() != '') {
+      $('#opportunity-contact').append('<br />');
+    }
+    $('#opportunity-contact').append(websiteContactLine(result.data('website')));
   }
 
-  $('#view_on_1deg').attr('onclick', "window.open('https://www.1deg.org/opportunities/" + result.data('slug') + "', '_system');");
+  $('#view_opportunity_on_1deg').attr('onclick', "window.open('https://www.1deg.org/opportunities/" + result.data('slug') + "', '_system');");
 
   mixpanel.track('Viewed opportunity', {
     'opportunity_id': result.data('id'),
@@ -249,6 +241,30 @@ $('#opportunity-organization').on('click', function() {
     _(fields).each(function(f) {
       $('#organization-' + f).html(data[f]);
     });
+
+    // Yes, this is comparing an empty array to an empty string, but apparently you can't compare an empty array to [].
+    if(data['locations'] == '') {
+      $('#organization-where').closest('.panel').hide();
+    } else {
+      $('#organization-where').closest('.panel').show();
+      $('#organization-where').html(
+        _.map(data['locations'], function(location) {
+          return locationBlockAndLink(location);
+        }).join('<br /><br />'));
+    }
+
+    $('#organization-contact').html(_.map(data['phones'], function(phone) {
+      return phoneContactLine(phone);
+    }).join('<br />'));
+
+    if(data['website'] && data['website'] != '') {
+      if($('#organization-contact').html() != '') {
+        $('#organization-contact').append('<br />');
+      }
+      $('#organization-contact').append(websiteContactLine(data['website']));
+    }
+
+    $('#view_organization_on_1deg').attr('onclick', "window.open('https://www.1deg.org/organizations/" + data['slug'] + "', '_system');");
 
     $.mobile.loading('hide');
 
