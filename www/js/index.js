@@ -178,7 +178,7 @@ $('#opportunity-results').on('click', 'a.result', function() {
     $('#opportunity-where').closest('.panel').show();
     $('#opportunity-where').html(
       _.map(result.data('locations'), function(location) {
-        var text = location.address + (location.unit == '' ? '' : ', ' + location.unit) + '<br />' + location.city + ', ' + location.state + ' ' + location.zip_code;
+        var text = location.address + (location.unit ? ', ' + location.unit : '') + '<br />' + location.city + ', ' + location.state + ' ' + (location.zip_code || '');
         return '<a href="' + mapsPrefix + text + '">' + text + '</a>';
       }).join('<br /><br />'));
   }
