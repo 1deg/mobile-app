@@ -9,6 +9,15 @@
   color: #ce2b2b;
 }
 
+.headline-bar {
+  padding: 10px 20px;
+  margin: 0 0 10px;
+  background-color: #f4f4f4;
+  border: 1px #dcdcdc solid;
+  font-size: 12px;
+  text-align: center;
+}
+
 ul.results-list li .results-li-heading .title {
   font-size: 15px;
   font-weight: bold;
