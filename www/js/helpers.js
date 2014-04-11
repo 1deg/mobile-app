@@ -20,6 +20,18 @@ function allDaysClosed(schedule) {
   return allClosed;
 }
 
+function locationAlert(alertClass, message) {
+  $('#location_status').html(message);
+  $('#location_status').addClass(alertClass);
+  $('#location_status').show();
+}
+
+function clearAlertStatus() {
+  $('#location_status').html('');
+  $('#location_status').attr('class', 'status');
+  $('#location_status').hide();
+}
+
 function reverseGeocode() {
   if (!google || !google.maps.Geocoder) {
     alert($.t("It looks like you_re currently offline_ Please go online before searching_"));
@@ -30,11 +42,9 @@ function reverseGeocode() {
       if (status == google.maps.GeocoderStatus.OK && results[1]) {
         app.readableLocation = results[1].formatted_address;
         $('#location').val(app.readableLocation);
-        $('#location_status').hide();
+        clearAlertStatus();
       } else {
-        $('#location_status').html($.t('Your location could not be found automatically_ Please specify it below_'));
-        $('#location_status').addClass('status-alert');
-        $('#location_status').show();
+        locationAlert('status-alert', $.t('Your location could not be found automatically_ Please specify it below_'));
         console.log('Geocoder failed due to: ' + status);
       }
     });

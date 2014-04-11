@@ -74,6 +74,7 @@
   "within": "within",
   "of_near": "of",
   "Your location": "Your location",
+  "Attempting to find your location automatically___": "Attempting to find your location automatically...",
   "Your location could not be found automatically_ Please specify it below_": "Your location could not be found automatically. Please specify it below.",
   "It looks like you_re currently offline_ Please go online before searching_": "It looks like you're currently offline. Please go online before searching.",
   "Show more": "Show more",

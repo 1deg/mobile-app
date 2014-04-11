@@ -32,6 +32,7 @@ var app = {
   },
 
   getPosition: function() {
+    locationAlert('status-notice', $.t('Attempting to find your location automatically___'));
     // 'app' has to be used because 'this' is the current event in this scope
     navigator.geolocation.getCurrentPosition(app.successOnGetCurrentPosition, app.errorOnGetCurrentPosition);
   },
@@ -47,9 +48,7 @@ var app = {
   },
 
   errorOnGetCurrentPosition: function() {
-    $('#location_status').addClass('status-alert');
-    $('#location_status').html($.t("Your location could not be found automatically_ Please specify it below_"));
-    $('#location_status').show();
+    locationAlert('status-alert', $.t("Your location could not be found automatically_ Please specify it below_"));
     if(!app.googleMapsReady) {
       app.loadGoogleMaps(false);
     }
