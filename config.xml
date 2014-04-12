@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="org.onedegree.duboce" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>One Degree</name>
+    <name>One Degree Search</name>
     <description>
-        A simple mobile app to search One Degree's database of social services.
+        Search One Degree's database of social services to find help with food, health, housing, employment, and more.
     </description>
     <author email="help@1deg.org" href="https://www.1deg.org">
         One Degree
