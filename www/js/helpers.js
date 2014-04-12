@@ -22,7 +22,7 @@ function allDaysClosed(schedule) {
 
 function locationAlert(alertClass, message) {
   $('#location_status').html(message);
-  $('#location_status').addClass(alertClass);
+  $('#location_status').attr('class', 'status ' + alertClass);
   $('#location_status').show();
 }
 
