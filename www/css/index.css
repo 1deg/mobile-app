@@ -30,13 +30,6 @@ header a.header-back-button {
   margin: 5px 20px;
 }
 
-.start-label {
-  font-size: 22px;
-  font-weight: normal;
-  text-align: center;
-  padding: 5px 0 10px;
-}
-
 .tag-list-or-label {
   text-align: center;
   font-weight: bold;

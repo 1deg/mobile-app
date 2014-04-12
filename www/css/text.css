@@ -18,8 +18,17 @@
   margin: 0 0 10px;
   background-color: #f4f4f4;
   border: 1px #dcdcdc solid;
-  font-size: 12px;
   text-align: center;
+}
+
+.headline-bar .headline {
+  font-size: 14px;
+  padding: 0 0 5px;
+  font-weight: bold;
+}
+
+.headline-bar .view-full-site {
+  font-size: 12px;
 }
 
 ul.results-list li .results-li-heading .title {
