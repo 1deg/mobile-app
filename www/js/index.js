@@ -212,7 +212,7 @@ $('#opportunity-results').on('click', 'a.result', function() {
     $('#opportunity-contact').append(websiteContactLine(result.data('website')));
   }
 
-  $('#view_opportunity_on_1deg').attr('onclick', "window.open('https://www.1deg.org/opportunities/" + result.data('slug') + "', '_system');");
+  $('#view_opportunity_on_1deg').attr('onclick', "window.open('https://www.1deg.org/opportunities/" + result.data('slug') + "?utm_source=duboce&utm_medium=opportunity-details&utm_campaign=view-on-1deg', '_system');");
 
   mixpanel.track('Viewed opportunity', {
     'opportunity_id': result.data('id'),
@@ -264,7 +264,7 @@ $('#opportunity-organization').on('click', function() {
       $('#organization-contact').append(websiteContactLine(data['website']));
     }
 
-    $('#view_organization_on_1deg').attr('onclick', "window.open('https://www.1deg.org/organizations/" + data['slug'] + "', '_system');");
+    $('#view_organization_on_1deg').attr('onclick', "window.open('https://www.1deg.org/organizations/" + data['slug'] + "?utm_source=duboce&utm_medium=organization-details&utm_campaign=view-on-1deg', '_system');");
 
     $.mobile.loading('hide');
 
